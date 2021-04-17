@@ -110,7 +110,7 @@
                             <li><a href="">M&Q</a></li>
                         </ul>
                 </li>
-                    <li><a href="">Vetements</a></li>
+                    <li><a href="vetem.php">Vetements</a></li>
 
                     <li><a href="">Montre et Bijoux </a></li>
                     <li><a href=""> Categorie 1</a></li>
