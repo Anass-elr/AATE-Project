@@ -1,3 +1,8 @@
+<?php
+   session_start();
+
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -50,7 +55,6 @@ $pass="";
   try{
     $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
      $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
 
      /*
      $connexion -> exec("CREATE DATABASE test");

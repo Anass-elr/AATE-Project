@@ -1,3 +1,9 @@
+<?php
+   session_start();
+
+   $_SESSION['name']="anass";
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -98,7 +104,7 @@
                             </li>
 
                                  
-                            <li class="Dropdown_two"><a href="">Telephone</a>
+                            <li class="Dropdown_two"><a href="tele.php">Telephone</a>
                                     <ul class="ss">
                                         <li><a href="sumsung.php">Sumsung</a></li>
                                         <li><a href="iphone.php">Iphone</a></li>
@@ -110,11 +116,23 @@
                             <li><a href="">M&Q</a></li>
                         </ul>
                 </li>
-                    <li><a href="vetem.php">Vetements</a></li>
 
-                    <li><a href="">Montre et Bijoux </a></li>
+                    <li  class="Dropdown_four"><a href="vetem.php">Vetements</a>
+                        <ul class="ss">
+                            <li><a href="">Homme</a></li>
+                            <li><a href="">Femme</a></li>
+                         </ul>
+                    </li>
+
+                    <li   class="Dropdown_five"><a href="mb.php">Montre et Bijoux </a>
+                        <ul class="ss">
+                            <li><a href="">Montres</a></li>
+                            <li><a href="">Bijoux</a></li>
+                         </ul>
+                
+                    </li>
                     <li><a href=""> Categorie 1</a></li>
-                  
+                    <li><a href=""> Categorie 2</a></li>
                 </ul>
             </div>
 

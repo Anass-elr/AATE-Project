@@ -1,7 +1,3 @@
-<?php
-   session_start();
-?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,7 +11,7 @@
          
       .box{
             float: left;
-            width: 20%;
+            width: 25%;
             height: 350px;
             background-color:#F5F5F5 ;
             margin: 20px;
@@ -23,6 +19,7 @@
             border: 1px solid  #240b0b18;
             border-radius: 10px;
             position: relative;
+            text-align:center;
         }
 
 
@@ -69,15 +66,9 @@ $pass="";
      echo "table créee";
      */
      
-
-
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat
-                                            FROM  produit as P,
-                                                de_  as	D,
-                                                categorie as C
-                                            WHERE    D.id_P=P.id_P and  D.id_cat=C.id_cat 
-                                            and   D.id_cat=6  and  P.marque='Dell' ;"
-                                   );
+     $requete=$connexion->prepare("SELECT P.title,P.prixAchat 
+     from produit as P, de_ as D
+     where  P.id_P=D.id_P  and   D.id_cat=5");
      $requete -> execute();
      $resultat= $requete -> fetchall();
 
@@ -125,33 +116,32 @@ catch(PDOException $e){
 
     <section id="third-section">
         <div class="container">
+
           <div class="placer">
-            <h2>Smart Phone Iphone </h2>
+            <h2>Smart Phone Sumsung </h2>
+                
+            <?php
+                foreach($resultat as $ind=>$val){
+                echo '<div class="box">';
+                echo  "<label>";
+                echo   "<h4>";
+                echo $resultat[$ind]['title'];
+                                
+                echo"<h4>";
+
+                echo"<h5>";
+                echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                echo"    </h5>";
+                echo"  </label>";
+                echo" </div>";
+                }
+                ?>
+
+
             
-         <?php
-            foreach($resultat as $ind=>$val){
-             echo '<div class="box">';
-             echo  "<label>";
-              echo   "<h4>";
-             echo $resultat[$ind]['title'];
-                            
-             echo"<h4>";
-
-             echo"<h5>";
-             echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-             echo"    </h5>";
-             echo"  </label>";
-             echo" </div>";
-            }
-            ?>
-
-
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
         </div>
         </div>
       </section>
 
-</body>
+   </body>
 </html>

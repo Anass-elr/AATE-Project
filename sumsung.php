@@ -134,9 +134,7 @@ catch(PDOException $e){
             ?>
 
 
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
+            
         </div>
         </div>
       </section>

@@ -2,6 +2,7 @@
    session_start();
 ?>
 
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -72,11 +73,11 @@ $pass="";
 
 
      $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat
-                                            FROM  produit as P,
-                                                de_  as	D,
-                                                categorie as C
-                                            WHERE    D.id_P=P.id_P and  D.id_cat=C.id_cat 
-                                            and   D.id_cat=6  and  P.marque='Dell' ;"
+                                        FROM  produit as P,
+                                        de_  as	D,
+                                        categorie as C
+                                        WHERE    D.id_P=P.id_P and  D.id_cat=C.id_cat 
+                                        and   D.id_cat=4 ;"
                                    );
      $requete -> execute();
      $resultat= $requete -> fetchall();
