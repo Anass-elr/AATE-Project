@@ -75,10 +75,8 @@ nav .nav1 ul li {
 
 
 nav .nav1 ul li:nth-child(3) {
-  
-    margin-right: 40px;
-  
- }
+  margin-right: 40px;
+}
 
 nav .nav1 ul , nav .nav1 form {
     display: inline;
@@ -135,7 +133,7 @@ nav .nav2 ul li {
 
  /*****    MAIN1  *****/
  #First-section {
-     min-height: 400px;
+     min-height: 456px;
 }
 
 
@@ -146,16 +144,13 @@ nav .nav2 ul li {
     
 }
 
-
-
- #First-section .box1 {
-   
-     width: 20%;
+#First-section .box1 {
+    width: 20%;
      box-sizing: border-box;
      border: 1px;
      border-radius: 8px;
          background-color: #F5F5F5;
-     min-height: 300px;
+         min-height: 380px;
      text-align: center;
 }
 
@@ -165,7 +160,7 @@ nav .nav2 ul li {
     width: 57%;
     box-sizing: border-box;
     background-color: rebeccapurple;
-    min-height: 300px;
+    min-height: 400px;
 }
 
  #First-section .box3 {
@@ -174,12 +169,12 @@ nav .nav2 ul li {
     width: 20%;
     box-sizing: border-box;
     background-color: #F5F5F5;
-    min-height: 300px;
+    min-height: 400px;
    }
 
    
 .box1,.box2,.box3{
-    margin-top: 50px;
+    margin-top: 26px;
 }
 
 #First-section .box1 h3{
@@ -295,48 +290,46 @@ nav .nav2 ul li {
 
  /*****    MAIN1  *****/
 
-h1{
+.titre {
     background-color: black;
-    width: 20%;
-    color: whitesmoke;
+    width: 100%;
+    color: #f5f5f5e3;
     height: 50px;
-    border-radius: 4px;
+    text-align: left;
+    padding-top: 2px;
+}
+.titre h1{
+    margin-top: 6px;
+    margin-left:80px;
+    font-size: 22px;
 }
 
 #third-section,#fourth-section{
-    min-height: 430px;
+    min-height:418px;
 }
 
 
 .placer{
-    margin-top: 20px;
+   margin: 10px;  
+   padding-left: 20px;
+   padding-top: 16px;
+   margin-bottom: 10px;
 }
 
 
 .box{
     float: left;
-    width: 20%;
-    height: 350px;
+    width: 22%;
+    height: 300px;
     background-color:#F5F5F5 ;
-    margin: 20px;
-    margin-top: 30px;
-    border: 1px solid  #240b0b18;
-    border-radius: 10px;
+    margin:8px 6px;
+    border: 1px solid none;
+    border-radius: 4px;
     position: relative;
+    box-sizing: border-box;
 }
 
 
-.box{
-    float: left;
-    width: 20%;
-    height: 350px;
-    background-color:#F5F5F5 ;
-    margin: 20px;
-    margin-top: 30px;
-    border: 1px solid  #240b0b18;
-    border-radius: 10px;
-    position: relative;
-}
 
 
 .box  h4{
@@ -393,8 +386,8 @@ h1{
 
 textarea{
     height: 60px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid none;
+    border-radius: 2px;
 }
 
 #fifth-section .contact form .prenom{
@@ -404,8 +397,8 @@ textarea{
 
 #fifth-section .contact form input{
     margin-bottom: 14px;
-    border: 1px solid black;
-    border-radius: 5px;
+    border: 1px solid none;
+    border-radius: 2px;
 }
 
 #fifth-section .contact form input[type="submit"]{
@@ -413,8 +406,9 @@ textarea{
     height: 35px;
     color: #f5f5f5c9;
     margin-top: 20px;
-   position: relative; 
-   left:29.5%;
+     position: relative; 
+     left:29.5%;
+     border: 1px solid black;
 }
 
 footer{

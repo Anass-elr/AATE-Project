@@ -23,7 +23,7 @@
         try{
            $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-            echo "Conexion reussite";
+           
 
             /*
             $connexion -> exec("CREATE DATABASE test");
@@ -66,7 +66,7 @@
           <div class="nav1">
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="">A propos de nous  </a></li>
+                    <li><a href="#fifth-section">A propos de nous  </a></li>
                     <li><a href="#fin">Contacter Nous</a></li>
                 </ul>
                 
@@ -150,9 +150,12 @@
     
     
     <section id="third-section">
+         <div class="titre">
+              <h1>Les Plus Visités </h1>
+           </div>  
+           
         <div class="container">
           <div class="placer">
-            <h1>Produit Tendence </h1>
             
             <div class="box">box1</div>
             <div class="box">box2</div>
@@ -164,15 +167,23 @@
 
 
     <section id="fourth-section">
-      <div class="container">
-        <div class="placer">
+         <div class="titre">
             <h1>Les Plus Vendus </h1>
-            <div class="box">box1</div>
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
-      </div>
-      </div>
+         </div>
+
+        <div class="container">
+            <div class="placer">
+                <div class="box">box1</div>
+                <div class="box">box2</div>
+                <div class="box">box3</div>
+                <div class="box">box4</div>
+                <div class="box">box1</div>
+                <div class="box">box2</div>
+                <div class="box">box3</div>
+                <div class="box">box4</div>
+            </div>
+        </div>
+
     </section>
 
 
@@ -191,7 +202,7 @@
             </div>
 
 
-        <div class="contact">
+        <div class="contact"  id="fin">
             <h2>Contacter Nous</h2>
             <form >
                  <label>Nom &nbsp &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp</label> <input type="text" name="nom"><br>
