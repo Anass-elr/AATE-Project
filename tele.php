@@ -8,7 +8,7 @@
     <title>Document</title>
 
     <style type="text/css">
-         
+      /*   
       .box{
             float: left;
             width: 25%;
@@ -36,6 +36,7 @@
             bottom:5%;
             left:66px;
         }
+        */
 
     </style>
 
@@ -66,12 +67,12 @@ $pass="";
      echo "table créee";
      */
      
-     $requete=$connexion->prepare("SELECT P.title,P.prixAchat 
-     from produit as P, de_ as D
+     $requete=$connexion->prepare("SELECT P.title,P.prixAchat,P.image
+                              from produit as P, de_ as D
      where  P.id_P=D.id_P  and   D.id_cat=5");
+     
      $requete -> execute();
      $resultat= $requete -> fetchall();
-
            
     }
 
@@ -95,8 +96,8 @@ catch(PDOException $e){
           <div class="nav1">
                 <ul>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="">A propos de nous  </a></li>
-                    <li><a href="#fin">Contacter Nous</a></li>
+                    <li><a href="index.php #fifth-section">A propos de nous  </a></li>
+                    <li><a href="index.php #fin">Contacter Nous</a></li>
                 </ul>
                 
                 <form >
@@ -123,11 +124,12 @@ catch(PDOException $e){
             <?php
                 foreach($resultat as $ind=>$val){
                 echo '<div class="box">';
+                echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
                 echo  "<label>";
                 echo   "<h4>";
                 echo $resultat[$ind]['title'];
                                 
-                echo"<h4>";
+                echo"</h4>";
 
                 echo"<h5>";
                 echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  

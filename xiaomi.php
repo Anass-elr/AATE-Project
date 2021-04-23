@@ -8,10 +8,10 @@
     <title>Document</title>
 
     <style type="text/css">
-         
+      /*   
       .box{
             float: left;
-            width: 20%;
+            width: 24%;
             height: 350px;
             background-color:#F5F5F5 ;
             margin: 20px;
@@ -35,7 +35,7 @@
             bottom:5%;
             left:66px;
         }
-
+        */
     </style>
 
 </head>
@@ -119,24 +119,22 @@ catch(PDOException $e){
          <?php
             foreach($resultat as $ind=>$val){
              echo '<div class="box">';
-             echo  "<label>";
-              echo   "<h4>";
-             echo $resultat[$ind]['title'];
-                            
-             echo"<h4>";
-
-             echo"<h5>";
-             echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-             echo"    </h5>";
-             echo"  </label>";
+                echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                echo  "<label>";
+                echo   "<h4>";
+                echo $resultat[$ind]['title'];
+                                
+                echo"<h4>";
+               echo"<h5>";
+                echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                echo"    </h5>";
+                echo"  </label>";
              echo" </div>";
             }
             ?>
 
 
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
+            
         </div>
         </div>
       </section>

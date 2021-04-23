@@ -8,16 +8,16 @@
     <title>Document</title>
 
     <style type="text/css">
-         
+         /*
       .box{
             float: left;
-            width: 20%;
+            width: 25%;
             height: 350px;
             background-color:#F5F5F5 ;
             margin: 20px;
             margin-top: 30px;
             border: 1px solid  #240b0b18;
-            border-radius: 10px;
+            border-radius: 4px;
             position: relative;
         }
 
@@ -35,7 +35,7 @@
             bottom:5%;
             left:66px;
         }
-
+        */
     </style>
 
 </head>
@@ -50,24 +50,8 @@ $pass="";
   try{
     $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
      $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
 
-     /*
-     $connexion -> exec("CREATE DATABASE test");
-     echo "Creation reussite"; 
-     */
-     /*
-     $codesql="CREATE TABLE test( 
-         idt INTEGER PRIMARY KEY,
-         name VARCHAR(20)
-         )";
-     $connexion ->exec($codesql); 
-     echo "table créee";
-     */
-     
-
-
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat
+     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
                                             FROM  produit as P,
                                                 de_  as	D,
                                                 categorie as C
@@ -77,8 +61,16 @@ $pass="";
      $requete -> execute();
      $resultat= $requete -> fetchall();
 
-           
-    }
+
+     $requete=$connexion->prepare("  SELECT image from produit where marque='Dell'; ");
+     $requete -> execute();
+
+     $res=$requete -> fetchall();
+
+    /*  echo "<pre>";echo print_r($res);echo "</pre>";*/
+
+  
+ }
 
 
 
@@ -127,6 +119,8 @@ catch(PDOException $e){
          <?php
             foreach($resultat as $ind=>$val){
              echo '<div class="box">';
+             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+
              echo  "<label>";
               echo   "<h4>";
              echo $resultat[$ind]['title'];
@@ -142,9 +136,7 @@ catch(PDOException $e){
             ?>
 
 
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
+          
         </div>
         </div>
       </section>

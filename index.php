@@ -34,7 +34,7 @@
                 idt INTEGER PRIMARY KEY,
                 name VARCHAR(20)
                 )";
-            $connexion ->exec($codesql); 
+            $connexion->exec($codesql); 
             echo "table créee";
             */
           /*  
@@ -54,6 +54,8 @@
 
     ?>
 
+    
+ 
     <header>
         <div class="containerr">
             <h3>Fshop</h3>

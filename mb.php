@@ -13,10 +13,10 @@
     <title>Document</title>
 
     <style type="text/css">
-         
+      /*   
       .box{
             float: left;
-            width: 20%;
+            width: 24%;
             height: 350px;
             background-color:#F5F5F5 ;
             margin: 20px;
@@ -40,7 +40,7 @@
             bottom:5%;
             left:66px;
         }
-
+        */
     </style>
 
 </head>
@@ -72,7 +72,7 @@ $pass="";
      
 
 
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat
+     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
                                         FROM  produit as P,
                                         de_  as	D,
                                         categorie as C
@@ -132,6 +132,7 @@ catch(PDOException $e){
          <?php
             foreach($resultat as $ind=>$val){
              echo '<div class="box">';
+             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
              echo  "<label>";
               echo   "<h4>";
              echo $resultat[$ind]['title'];
@@ -146,10 +147,6 @@ catch(PDOException $e){
             }
             ?>
 
-
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
         </div>
         </div>
       </section>

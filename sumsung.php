@@ -8,7 +8,7 @@
     <title>Document</title>
 
     <style type="text/css">
-         
+     /*    
       .box{
             float: left;
             width: 20%;
@@ -35,7 +35,7 @@
             bottom:5%;
             left:66px;
         }
-
+        */
     </style>
 
 </head>
@@ -119,6 +119,7 @@ catch(PDOException $e){
          <?php
             foreach($resultat as $ind=>$val){
              echo '<div class="box">';
+             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
              echo  "<label>";
               echo   "<h4>";
              echo $resultat[$ind]['title'];
