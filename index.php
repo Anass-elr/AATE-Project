@@ -7,11 +7,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
-
+    <link rel="stylesheet" href="https://unpkg.com/flickity@2.0.11/dist/flickity.min.css">
    
 </head>
 <body>
-
+  <script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script>
     <?php 
         $serveur="localhost";
         $login="root";
@@ -21,12 +21,18 @@
            $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-        $req=$connexion->prepare("SELECT prix,P.title,P.image
+          $req=$connexion->prepare("SELECT prix,P.title,P.image
                 from dispo_en D,produit P
                where D.id_P=P.id_P and D.idpromo=1 ;");
 
             $req->execute();
             $res=$req->fetchall();
+
+            
+            $sql=$connexion->prepare("SELECT prixAchat,title,image
+                        from produit;");
+            $sql->execute();
+            $res1=$sql->fetchall();
             
         }
 
@@ -37,30 +43,57 @@
 
     ?>
 
- <header class="banda">
-        <div class="containerr">
-           
-               <ul>
-                   <li>Fshop</li>
+
+ <nav class="banda">
+        <ul >
+                   <li class="left"> <a href="">Fshop</a></li>
                     <li><a href="index.php"> Home</a></li>
 
-                    <li>Categorie </li>
+                    <li><a href="">Categorie</a>
+                        <ul>
+                            <li><a href="electro.php">Electronique</a>
+                                <ul>
+                                    <li><a href="">Telephone</a>
+                                        <ul>
+                                             <li><a href="">Sumsung</a></li>
+                                             <li><a href="">Acessoirs</a></li>
+                                             <li><a href="">M&Q</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">PC</a></li>
+                                    <li><a href="">Acessoirs</a></li>
+                                    <li><a href="">M&Q</a></li>
+                                </ul>
+                        
+                            </li>
+                            <li><a href="">Vetements</a>
+                                <ul>
+                                    <li><a href="">Homme</a></li>
+                                    <li><a href="">Femme</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Montre et Bijoux</a></li>
+                            <li><a href="">XXXXXX</a></li>
+                        </ul>
+                    </li>
 
                     <li><a href="#fifth-section">A propos de nous  </a></li>
                     <li><a href="#fin">Contacter Nous</a></li>
-               
-                       <li><a href="conn.php">Se connecter</a></li>
+                     </ul>
+
+
+                <ul class="right">
+                     <li><a href="conn.php" >Se connecter</a></li>
                         <li ><a href="">Panier</a></li>
                      </ul>
-                
-        </div>
+  
 
-    </header>
-
+    </nav>
+  
     
 
     <section id="First-section">
-        <div class="container">
+      <div class="container">
         
         <div class="barre"> <h2>Profitez De Nos Offres | Jusqu'a -40% </h2></div>
 
@@ -92,17 +125,30 @@
     
     
     <section id="third-section">
-         <div class="titre banda">
+        <div class="titre banda">
               <h1>Les Plus Visités </h1>
            </div>  
            
-        <div class="container">
-          <div class="placer">
+        <div class="containerr">
+          <div class="placer" data-flickity='{ "groupCells": true }'>
+             
+          <?php 
+                 foreach($res1 as $ind=>$val){
+                    echo '<div class="box">';
+                        echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                            
+                            echo   "<h4>";
+                            echo $res1[$ind]['title'];
+                                            
+                            echo"</h4>";
+
+                            echo"<h4>";
+                            echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
+
+                    echo '</div>';
+                 }
+        ?>
             
-            <div class="box">box1</div>
-            <div class="box">box2</div>
-            <div class="box">box3</div>
-            <div class="box">box4</div>
         </div>
         </div>
       </section>
@@ -113,16 +159,24 @@
             <h1>Les Plus Vendus </h1>
          </div>
 
-        <div class="container">
-            <div class="placer">
-                <div class="box">box1</div>
-                <div class="box">box2</div>
-                <div class="box">box3</div>
-                <div class="box">box4</div>
-                <div class="box">box1</div>
-                <div class="box">box2</div>
-                <div class="box">box3</div>
-                <div class="box">box4</div>
+        <div class="containerr">
+            <div class="placer" data-flickity='{ "groupCells": true }'>
+        <?php
+              foreach($res1 as $ind=>$val){
+                    echo '<div class="box">';
+                        echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                            
+                            echo   "<h4>";
+                            echo $res1[$ind]['title'];
+                                            
+                            echo"</h4>";
+
+                            echo"<h4>";
+                            echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
+
+                    echo '</div>';
+                 }
+                 ?>
             </div>
         </div>
 
