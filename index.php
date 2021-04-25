@@ -1,8 +1,3 @@
-<?php
-   session_start();
-
-   $_SESSION['name']="anass";
-?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -12,6 +7,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
+
+   
 </head>
 <body>
 
@@ -23,28 +20,14 @@
         try{
            $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-           
 
-            /*
-            $connexion -> exec("CREATE DATABASE test");
-            echo "Creation reussite"; 
-            */
-            /*
-            $codesql="CREATE TABLE test( 
-                idt INTEGER PRIMARY KEY,
-                name VARCHAR(20)
-                )";
-            $connexion->exec($codesql); 
-            echo "table créee";
-            */
-          /*  
-            $requete=$connexion->prepare("SELECT title,image from produit where marque='Sumsung'");
-            $requete -> execute();
-            $resultat=$requete -> fetchall();
-                
-            */
-           
+        $req=$connexion->prepare("SELECT prix,P.title,P.image
+                from dispo_en D,produit P
+               where D.id_P=P.id_P and D.idpromo=1 ;");
 
+            $req->execute();
+            $res=$req->fetchall();
+            
         }
 
         catch(PDOException $e){
@@ -54,105 +37,62 @@
 
     ?>
 
-    
- 
-    <header>
+ <header class="banda">
         <div class="containerr">
-            <h3>Fshop</h3>
+           
+               <ul>
+                   <li>Fshop</li>
+                    <li><a href="index.php"> Home</a></li>
+
+                    <li>Categorie </li>
+
+                    <li><a href="#fifth-section">A propos de nous  </a></li>
+                    <li><a href="#fin">Contacter Nous</a></li>
+               
+                       <li><a href="conn.php">Se connecter</a></li>
+                        <li ><a href="">Panier</a></li>
+                     </ul>
+                
         </div>
 
     </header>
 
-    <nav>
-        <div class="containerr">
-          <div class="nav1">
-                <ul>
-                    <li><a href="index.php">Home</a></li>
-                    <li><a href="#fifth-section">A propos de nous  </a></li>
-                    <li><a href="#fin">Contacter Nous</a></li>
-                </ul>
-                
-                <form >
-                    <input type="search" name="search" placeholder="Entrez un produit">
-                </form>
-             </div>
-
-        <div class="nav2">
-            <ul>
-                <li><a href="">Se connecter</a></li>
-                <li ><a href="">Panier</a></li>
-            </ul>
-        </div>
-        </div>
-    </nav>
+    
 
     <section id="First-section">
         <div class="container">
+        
+        <div class="barre"> <h2>Profitez De Nos Offres | Jusqu'a -40% </h2></div>
 
-            <div class="box1">
-              <h3>Categorie</h3>
-              
-              <ul>
-                <li class="Dropdown" ><a href="electro.php">Electronique</a>
-                        <ul class="ss">
-
-                            <li class="Dropdown_tree"><a href="pc.php">PC</a>
-                                <ul class="">
-                                        <li><a href="dell.php">Dell</a></li>
-                                        <li><a href="">Lenovo</a></li>
-                                        <li><a href="">HP</a></li>
-                                    </ul>
+        <div class="prod">
+    
+            <?php  
+                foreach($res as $ind=>$val){
+                    echo '<div class="box3">';
+                        echo '<img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
-                            </li>
+                            echo   "<h4>";
+                            echo $res[$ind]['title'];
+                                            
+                            echo"</h4>";
 
-                                 
-                            <li class="Dropdown_two"><a href="tele.php">Telephone</a>
-                                    <ul class="ss">
-                                        <li><a href="sumsung.php">Sumsung</a></li>
-                                        <li><a href="iphone.php">Iphone</a></li>
-                                        <li><a href="xiaomi.php">Xiaomi</a></li>
-                                    </ul>
+                            echo"<h4>";
+                            echo "Prix:  ".$res[$ind]['prix']."  Dh"; 
 
-                            </li> 
-                            <li><a href="">Acessoirs</a></li>
-                            <li><a href="">M&Q</a></li>
-                        </ul>
-                </li>
+                    echo '</div>';
+                }
 
-                    <li  class="Dropdown_four"><a href="vetem.php">Vetements</a>
-                        <ul class="ss">
-                            <li><a href="">Homme</a></li>
-                            <li><a href="">Femme</a></li>
-                         </ul>
-                    </li>
+            ?>
 
-                    <li   class="Dropdown_five"><a href="mb.php">Montre et Bijoux </a>
-                        <ul class="ss">
-                            <li><a href="">Montres</a></li>
-                            <li><a href="">Bijoux</a></li>
-                         </ul>
-                
-                    </li>
-                    <li><a href=""> Categorie 1</a></li>
-                    <li><a href=""> Categorie 2</a></li>
-                </ul>
-            </div>
-
-            <div class="box2">
-              <p>Adds</p>
-            </div>
-
-            <div class="box3">
-                <p>Promotion</p>
-            </div>
-
+        </div>
+    
 
         </div>
     </section> 
     
     
     <section id="third-section">
-         <div class="titre">
+         <div class="titre banda">
               <h1>Les Plus Visités </h1>
            </div>  
            

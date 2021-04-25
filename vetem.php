@@ -87,36 +87,29 @@ catch(PDOException $e){
  }
    ?>
 
-
-<header>
+<header class="banda">
         <div class="containerr">
-            <h3>Fshop</h3>
-        </div>
-
-    </header>
-
-    <nav>
-        <div class="containerr">
-          <div class="nav1">
-                <ul>
+            <div class="nav1">
+               <ul>
+                   <li> <h3>Fshop</h3></li>
                     <li><a href="index.php">Home</a></li>
-                    <li><a href="">A propos de nous  </a></li>
+                    <li><a href="#fifth-section">A propos de nous  </a></li>
                     <li><a href="#fin">Contacter Nous</a></li>
                 </ul>
                 
-                <form >
-                    <input type="search" name="search" placeholder="Entrez un produit">
-                </form>
+                  
+
              </div>
 
-        <div class="nav2">
-            <ul>
-                <li><a href="">Se connecter</a></li>
-                <li ><a href="">Panier</a></li>
-            </ul>
+                <div class="nav2">
+                    <ul>
+                        <li><a href="">Se connecter</a></li>
+                        <li ><a href="">Panier</a></li>
+                    </ul>
+                </div>
         </div>
-        </div>
-    </nav>
+
+    </header>
 
 
     <section id="third-section">
