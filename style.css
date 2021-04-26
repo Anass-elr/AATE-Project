@@ -153,7 +153,9 @@ body {
     padding-top: 5px;
     padding-left: 8px;
     border-top: 1px solid  #240b0b18;
-    border-radius: 4px 4px 4px 4px ;
+    border-radius: 6px 0px 0px 0px;
+    border-top-right-radius: 4px;
+   
 }
 
 
@@ -161,9 +163,10 @@ body {
     display: flex;
     background-color: #FFFFFF;
     min-height: 260px;
-    border-radius: 0px 0px 4px 4px ;
+    border-radius: 0px 0px 6px 6px ;
     padding: 8px 6px;
 }
+#First-section .barre h2{margin-top: 1px;}
 
 #First-section .box3 {
     margin-right: 16px;

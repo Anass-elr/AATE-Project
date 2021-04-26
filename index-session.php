@@ -1,16 +1,6 @@
 <?php
-
-   session_start();
-    if(!isset( $_SESSION['logged']) || !$_SESSION['logged']){
-          session_unset();
-          session_destroy(); 
-          session_write_close();
-          setcookie(session_name(),'',0,null,null,false,true);
-    }
-    
-    $username= isset($_SESSION['login']) ? $_SESSION['login'] : '';
+    require_once('session-verfi.php');
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -45,17 +35,6 @@
                         from produit;");
             $sql->execute();
             $res1=$sql->fetchall();
-
-
-            //$sql="SELECT password from client where username='$username ;";
-
-            $reqq=$connexion->prepare("SELECT password from client where username='$username' ;");
-            $reqq->execute();
-            $ress=$reqq->fetchall();
-
-           
-    
-            echo "<pre>"; echo print_r($ress); echo "</pre>";
             
         }
 
@@ -119,7 +98,7 @@
       <div class="container">
         
         
-        <div class="barre"> <h2>Profitez De Nos Offres <?php echo $username; ?>  | Jusqu'a -40% </h2></div>
+        <div class="barre"> <h2>Profitez De Nos Offres  | Jusqu'a -40% </h2></div>
 
         <div class="prod">
     
