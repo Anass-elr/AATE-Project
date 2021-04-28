@@ -1,7 +1,7 @@
-<?php
-    require_once('session-verfi.php');
+<?php 
+   session_start();
+   $username= isset($_SESSION['login']) ? $_SESSION['login'] : '';
 ?>
-
 
 <!DOCTYPE html>
 <html lang="en">
@@ -68,29 +68,57 @@ catch(PDOException $e){
    ?>
 
 
-<header class="banda">
-        <div class="containerr">
-            <div class="nav1">
-               <ul>
-                   <li> <h3>Fshop</h3></li>
-                    <li><a href="index.php">Home</a></li>
+<?php 
+   // echo "<h1>";echo "Bonjour ".$username;echo "</h1>";
+?>
+
+<nav class="banda">
+        <ul >
+                   <li class="left"> <a href="">Fshop</a></li>
+                    <li><a href="index.php"> Home</a></li>
+
+                    <li><a href="">Categorie</a>
+                        <ul>
+                            <li><a href="electro.php">Electronique</a>
+                                <ul>
+                                    <li><a href="">Telephone</a>
+                                        <ul>
+                                             <li><a href="">Sumsung</a></li>
+                                             <li><a href="">Acessoirs</a></li>
+                                             <li><a href="">M&Q</a></li>
+                                        </ul>
+                                    </li>
+                                    <li><a href="">PC</a></li>
+                                    <li><a href="">Acessoirs</a></li>
+                                    <li><a href="">M&Q</a></li>
+                                </ul>
+                        
+                            </li>
+                            <li><a href="">Vetements</a>
+                                <ul>
+                                    <li><a href="">Homme</a></li>
+                                    <li><a href="">Femme</a></li>
+                                </ul>
+                            </li>
+                            <li><a href="">Montre et Bijoux</a></li>
+                            <li><a href="">XXXXXX</a></li>
+                        </ul>
+                    </li>
+
                     <li><a href="#fifth-section">A propos de nous  </a></li>
                     <li><a href="#fin">Contacter Nous</a></li>
-                </ul>
-                
-                  
+                     </ul>
 
-             </div>
 
-                <div class="nav2">
-                    <ul>
-                        <li><a href="">Se connecter</a></li>
+                <ul class="right">
+                     <li><a href="conn.php" >Se connecter</a></li>
+                     <li><a href="deco.php">se déconnecter</a></li>
                         <li ><a href="">Panier</a></li>
-                    </ul>
-                </div>
-        </div>
+                     </ul>
+  
 
-    </header>
+    </nav>
+  
 
 
     <section id="third-section">

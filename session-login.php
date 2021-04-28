@@ -36,7 +36,7 @@ catch(PDOException $e){
         $_SESSION['password']=$pass;
         $_SESSION['logged']=true;
 
-        header('Location: index.php');
+        header('Location: indexx.php');
     }
 
 ?> 

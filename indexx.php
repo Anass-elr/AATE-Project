@@ -1,6 +1,17 @@
 <?php
-    require_once('session-verfi.php');
+ 
+   session_start();
+    if(!isset( $_SESSION['logged']) || !$_SESSION['logged']){
+          session_unset();
+          session_destroy(); 
+          $_SESSION = array();
+    }
+    
+    $username= isset($_SESSION['login']) ? $_SESSION['login'] : '';
+ 
+   
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -15,6 +26,8 @@
 <body>
   <script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script>
     <?php 
+  
+      
         $serveur="localhost";
         $login="root";
         $pass="";
@@ -35,13 +48,26 @@
                         from produit;");
             $sql->execute();
             $res1=$sql->fetchall();
+
+
+            //$sql="SELECT password from client where username='$username ;";
+          
+            
+            $reqq=$connexion->prepare("SELECT password from client where username='$username' ;");
+            $reqq->execute();
+            $ress=$reqq->fetchall();
+
+           
+    
+            echo "<pre>"; echo print_r($ress); echo "</pre>";
+            
             
         }
 
         catch(PDOException $e){
            echo $e->getMessage();
         }
-
+   
 
     ?>
 
@@ -86,6 +112,7 @@
 
                 <ul class="right">
                      <li><a href="conn.php" >Se connecter</a></li>
+                     <li><a href="deco.php">se déconnecter</a></li>
                         <li ><a href="">Panier</a></li>
                      </ul>
   
@@ -98,7 +125,7 @@
       <div class="container">
         
         
-        <div class="barre"> <h2>Profitez De Nos Offres  | Jusqu'a -40% </h2></div>
+        <div class="barre"> <h2>Profitez De Nos Offres <?php  echo $username; ?>  | Jusqu'a -40% </h2></div>
 
         <div class="prod">
     

@@ -1,14 +1,15 @@
 <?php
-
+ /*
    session_start();
     if(!isset( $_SESSION['logged']) || !$_SESSION['logged']){
           session_unset();
           session_destroy(); 
-          session_write_close();
-          setcookie(session_name(),'',0,null,null,false,true);
+          $_SESSION = array();
     }
     
     $username= isset($_SESSION['login']) ? $_SESSION['login'] : '';
+ */
+    
 ?>
 
 <!DOCTYPE html>
@@ -20,11 +21,23 @@
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
     <link rel="stylesheet" href="https://unpkg.com/flickity@2.0.11/dist/flickity.min.css">
+    <style>
+        .box3 a{  
+             color:#1F1F1F;
+         }
+
+         .box a{  
+             color:#1F1F1F;
+         }
+ 
+        </style>
    
 </head>
 <body>
   <script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script>
     <?php 
+  
+      
         $serveur="localhost";
         $login="root";
         $pass="";
@@ -48,7 +61,8 @@
 
 
             //$sql="SELECT password from client where username='$username ;";
-
+          
+            /*
             $reqq=$connexion->prepare("SELECT password from client where username='$username' ;");
             $reqq->execute();
             $ress=$reqq->fetchall();
@@ -56,6 +70,7 @@
            
     
             echo "<pre>"; echo print_r($ress); echo "</pre>";
+            */
             
         }
 
@@ -68,35 +83,53 @@
 
 
  <nav class="banda">
+
+      <div class="fshop"><h2>Fshop</h2></div>
+
+     <div class="nav">
         <ul >
-                   <li class="left"> <a href="">Fshop</a></li>
+                   
                     <li><a href="index.php"> Home</a></li>
 
                     <li><a href="">Categorie</a>
                         <ul>
                             <li><a href="electro.php">Electronique</a>
                                 <ul>
-                                    <li><a href="">Telephone</a>
+                                    <li><a href="tele.php">Telephone</a>
                                         <ul>
-                                             <li><a href="">Sumsung</a></li>
-                                             <li><a href="">Acessoirs</a></li>
-                                             <li><a href="">M&Q</a></li>
+                                             <li><a href="sumsung.php">Sumsung</a></li>
+                                             <li><a href="iphone.php">Apple</a></li>
+                                             <li><a href="xiaomi.php">Xiaomi</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">PC</a></li>
+                                    <li><a href="pc.php">PC</a>
+                                       <ul>
+                                             <li><a href="">HP</a></li>
+                                             <li><a href="dell.php">Dell</a></li>
+                                             <li><a href="">Apple</a></li>
+                                        </ul>
+                                
+                                
+                                       </li>
                                     <li><a href="">Acessoirs</a></li>
                                     <li><a href="">M&Q</a></li>
                                 </ul>
                         
                             </li>
-                            <li><a href="">Vetements</a>
+                            <li><a href="vetem.php">Vetements</a>
                                 <ul>
                                     <li><a href="">Homme</a></li>
                                     <li><a href="">Femme</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Montre et Bijoux</a></li>
-                            <li><a href="">XXXXXX</a></li>
+                            <li><a href="mb.php">Montre et Bijoux</a>
+                            <ul>
+                                             <li><a href="">Montre</a></li>
+                                             <li><a href="">Bijoux</a></li>
+                                            
+                                        </ul>
+                        
+                                </li>
                         </ul>
                     </li>
 
@@ -107,8 +140,11 @@
 
                 <ul class="right">
                      <li><a href="conn.php" >Se connecter</a></li>
+                     <li><a href="deco.php">se déconnecter</a></li>
                         <li ><a href="">Panier</a></li>
                      </ul>
+
+    </div>
   
 
     </nav>
@@ -119,14 +155,15 @@
       <div class="container">
         
         
-        <div class="barre"> <h2>Profitez De Nos Offres <?php echo $username; ?>  | Jusqu'a -40% </h2></div>
+        <div class="barre"> <h2>Profitez De Nos Offres <?php /* echo $username; */?>  | Jusqu'a -40% </h2></div>
 
         <div class="prod">
     
             <?php  
                 foreach($res as $ind=>$val){
                     echo '<div class="box3">';
-                        echo '<img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
+
+                echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
                             echo $res[$ind]['title'];
@@ -135,7 +172,7 @@
 
                             echo"<h4>";
                             echo "Prix:  ".$res[$ind]['prix']."  Dh"; 
-
+                            echo "</h4> </a>";
                     echo '</div>';
                 }
 
@@ -159,16 +196,15 @@
           <?php 
                  foreach($res1 as $ind=>$val){
                     echo '<div class="box">';
-                        echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                        echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%;">';
                             
                             echo   "<h4>";
                             echo $res1[$ind]['title'];
-                                            
                             echo"</h4>";
 
                             echo"<h4>";
                             echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
-
+                            echo "</h4></a>";
                     echo '</div>';
                  }
         ?>
@@ -188,7 +224,7 @@
         <?php
               foreach($res1 as $ind=>$val){
                     echo '<div class="box">';
-                        echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                        echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
                             echo $res1[$ind]['title'];
@@ -197,7 +233,9 @@
 
                             echo"<h4>";
                             echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
+                            echo"</h4>";
 
+                            echo '</a>';
                     echo '</div>';
                  }
                  ?>
