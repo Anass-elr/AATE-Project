@@ -25,7 +25,7 @@ $pass="";
     $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
      $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
      
-     $requete=$connexion->prepare("SELECT P.title,P.prixAchat,P.image
+     $requete=$connexion->prepare("SELECT P.title,P.prixAchat,P.image,P.id_P
                               from produit as P, de_ as D
      where  P.id_P=D.id_P  and   D.id_cat=5");
      
@@ -119,22 +119,26 @@ catch(PDOException $e){
             <h2>Smart Phone Sumsung </h2>
                 
             <?php
-                foreach($resultat as $ind=>$val){
+          $id=0;
+            foreach($resultat as $ind=>$val){
+                $id=$resultat[$ind]['id_P'];
                 echo '<div class="box">';
-                echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
-                echo  "<label>";
-                echo   "<h4>";
-                echo $resultat[$ind]['title'];
+                echo "<a href='achat.php?id=$id' target='_blank'>";
+                    echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                   
+                    echo   "<h4>";
+                    echo $resultat[$ind]['title'];
                                 
-                echo"</h4>";
+                        echo"<h4>";
 
-                echo"<h5>";
-                echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-                echo"    </h5>";
-                echo"  </label>";
+                        echo"<h5>";
+                        echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                        echo"    </h5>";
+                        echo "</a>";
+                
                 echo" </div>";
-                }
-                ?>
+            }
+            ?>
 
 
             

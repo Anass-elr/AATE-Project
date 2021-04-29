@@ -55,7 +55,7 @@ $pass="";
     $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
      $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
+     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image,P.id_P
                                             FROM  produit as P,
                                                 de_  as	D,
                                                 categorie as C
@@ -157,22 +157,25 @@ catch(PDOException $e){
           <div class="placer">
             <h2>Smart Phone Iphone </h2>
             
-         <?php
+            <?php
+          $id=0;
             foreach($resultat as $ind=>$val){
-             echo '<div class="box">';
-             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                $id=$resultat[$ind]['id_P'];
+                echo '<div class="box">';
+                echo "<a href='achat.php?id=$id' target='_blank'>";
+                    echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                   
+                    echo   "<h4>";
+                    echo $resultat[$ind]['title'];
+                                
+                        echo"<h4>";
 
-             echo  "<label>";
-              echo   "<h4>";
-             echo $resultat[$ind]['title'];
-                            
-             echo"<h4>";
-
-             echo"<h5>";
-             echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-             echo"    </h5>";
-             echo"  </label>";
-             echo" </div>";
+                        echo"<h5>";
+                        echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                        echo"    </h5>";
+                        echo "</a>";
+                
+                echo" </div>";
             }
             ?>
 

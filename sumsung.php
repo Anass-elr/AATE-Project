@@ -65,7 +65,7 @@ $pass="";
      echo "table créee";
      */
      
-     $requete=$connexion->prepare("SELECT title,prixAchat,image from produit where marque='Sumsung' ");
+     $requete=$connexion->prepare("SELECT title,prixAchat,image,id_P from produit where marque='Sumsung' ");
      $requete -> execute();
      $resultat= $requete -> fetchall();
 
@@ -153,21 +153,25 @@ catch(PDOException $e){
           <div class="placer">
             <h2>Smart Phone Sumsung </h2>
             
-         <?php
+            <?php
+          $id=0;
             foreach($resultat as $ind=>$val){
-             echo '<div class="box">';
-             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
-             echo  "<label>";
-              echo   "<h4>";
-             echo $resultat[$ind]['title'];
-                            
-             echo"<h4>";
+                $id=$resultat[$ind]['id_P'];
+                echo '<div class="box">';
+                echo "<a href='achat.php?id=$id' target='_blank'>";
+                    echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                   
+                    echo   "<h4>";
+                    echo $resultat[$ind]['title'];
+                                
+                        echo"<h4>";
 
-             echo"<h5>";
-             echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-             echo"    </h5>";
-             echo"  </label>";
-             echo" </div>";
+                        echo"<h5>";
+                        echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                        echo"    </h5>";
+                        echo "</a>";
+                
+                echo" </div>";
             }
             ?>
 

@@ -47,7 +47,7 @@ $pass="";
      
 
 
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
+     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image,P.id_P
                                         FROM  produit as P,
                                         de_  as	D,
                                         categorie as C
@@ -73,35 +73,53 @@ catch(PDOException $e){
 ?>
 
 <nav class="banda">
+
+      <div class="fshop"><h2>Fshop</h2></div>
+
+     <div class="nav">
         <ul >
-                   <li class="left"> <a href="">Fshop</a></li>
+                   
                     <li><a href="index.php"> Home</a></li>
 
                     <li><a href="">Categorie</a>
                         <ul>
                             <li><a href="electro.php">Electronique</a>
                                 <ul>
-                                    <li><a href="">Telephone</a>
+                                    <li><a href="tele.php">Telephone</a>
                                         <ul>
-                                             <li><a href="">Sumsung</a></li>
-                                             <li><a href="">Acessoirs</a></li>
-                                             <li><a href="">M&Q</a></li>
+                                             <li><a href="sumsung.php">Sumsung</a></li>
+                                             <li><a href="iphone.php">Apple</a></li>
+                                             <li><a href="xiaomi.php">Xiaomi</a></li>
                                         </ul>
                                     </li>
-                                    <li><a href="">PC</a></li>
+                                    <li><a href="pc.php">PC</a>
+                                       <ul>
+                                             <li><a href="">HP</a></li>
+                                             <li><a href="dell.php">Dell</a></li>
+                                             <li><a href="">Apple</a></li>
+                                        </ul>
+                                
+                                
+                                       </li>
                                     <li><a href="">Acessoirs</a></li>
                                     <li><a href="">M&Q</a></li>
                                 </ul>
                         
                             </li>
-                            <li><a href="">Vetements</a>
+                            <li><a href="vetem.php">Vetements</a>
                                 <ul>
                                     <li><a href="">Homme</a></li>
                                     <li><a href="">Femme</a></li>
                                 </ul>
                             </li>
-                            <li><a href="">Montre et Bijoux</a></li>
-                            <li><a href="">XXXXXX</a></li>
+                            <li><a href="mb.php">Montre et Bijoux</a>
+                            <ul>
+                                             <li><a href="">Montre</a></li>
+                                             <li><a href="">Bijoux</a></li>
+                                            
+                                        </ul>
+                        
+                                </li>
                         </ul>
                     </li>
 
@@ -115,6 +133,8 @@ catch(PDOException $e){
                      <li><a href="deco.php">se déconnecter</a></li>
                         <li ><a href="">Panier</a></li>
                      </ul>
+
+    </div>
   
 
     </nav>
@@ -127,20 +147,24 @@ catch(PDOException $e){
             <h2>Smart Phone Iphone </h2>
             
          <?php
+          $id=0;
             foreach($resultat as $ind=>$val){
-             echo '<div class="box">';
-             echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
-             echo  "<label>";
-              echo   "<h4>";
-             echo $resultat[$ind]['title'];
-                            
-             echo"<h4>";
+                $id=$resultat[$ind]['id_P'];
+                echo '<div class="box">';
+                   echo "<a href='achat.php?id=$id' target='_blank'>";
+                    echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:70%; " >';
+                   
+                    echo   "<h4>";
+                    echo $resultat[$ind]['title'];
+                                
+                        echo"<h4>";
 
-             echo"<h5>";
-             echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
-             echo"    </h5>";
-             echo"  </label>";
-             echo" </div>";
+                        echo"<h5>";
+                        echo "Prix:  ".$resultat[$ind]['prixAchat']."  Dh";  
+                        echo"    </h5>";
+                        echo "</a>";
+                
+                echo" </div>";
             }
             ?>
         </div>

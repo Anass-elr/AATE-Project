@@ -4,7 +4,7 @@ body {
     font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, Oxygen, Ubuntu, Cantarell, 'Open Sans', 'Helvetica Neue', sans-serif;
     font-size: 16px;
     background-color:;
-    color: #1F1F1F;
+    color: #000000;
 }
 
 *{
@@ -294,19 +294,17 @@ div.sinscrire{
     text-align:center;
 }
 
-.box .button{
-    width: 100%;
-    height: 32px;
-    background-color: #FF7769;
-    border:none;
-}
-
-
 .box:hover{
     transform: scaleY(1.05);
     /*background-color:#f5f5f5c9 ; */
     box-shadow: 10px 10px 10px 10px  #f5f5f596;
 }
+
+
+.box a {
+    color: black;
+}
+
 
 
 
@@ -440,17 +438,79 @@ footer{
 
 
 #achat{
-    background-color: #F2F2F2;
+    background-color: #f2f2f2e7;
     height:1500px;
     padding: 5%;
+    padding-top: 5%;
    
 }
 
 #achat .produit{
     background-color: #FFFFFF;
-    width: 65%;
-    height: 450px;
+    width: 80%;
+    min-height: 420px;
     margin-bottom: 20px;
     border-radius: 6px;
-    margin-left: 130px;
+    margin-left: 90px;
+    display: flex;
+    padding: 12px;
+    border: 1px solid #240b0b38;
 }
+
+
+
+#achat .produit .image{
+  width: 32%;
+  
+ }
+
+ #achat .produit .image img{
+   margin-top: 30px;
+   // border: 2px solid #240b0b18;
+   }
+
+#achat .produit .info {
+    width: 68%;
+    border-left: 1px solid #0a010138;
+    padding:10px;
+    color: black;
+}
+
+
+
+#achat .produitt p{
+     margin-left: 16px;
+}
+
+#achat .produit .info h2,  
+#achat .produit .info  h4{
+    margin-bottom: 2px;
+}
+
+#achat .produit .info  h4{
+    font-weight: normal;
+    font-size: 17px;
+    font-weight:450 ;
+}
+
+#achat .produit .info  h3 {
+    margin-top: 14px;
+    margin-bottom: 8px;
+    font-size: 22px;
+}
+
+#achat .produit .info input{
+    width: 50%;
+    height: 40px;
+    background-color:rgb(255, 153, 0);
+    border-radius: 4px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    margin-top: 10px;
+}
+
+#achat .produit .info input:hover{
+    background-color: #F68B1E;
+}
+

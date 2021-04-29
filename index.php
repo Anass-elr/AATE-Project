@@ -46,7 +46,7 @@
            $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-          $req=$connexion->prepare("SELECT prix,P.title,P.image
+            $req=$connexion->prepare("SELECT prix,P.title,P.image
                 from dispo_en D,produit P
                where D.id_P=P.id_P and D.idpromo=1 ;");
 
@@ -54,24 +54,20 @@
             $res=$req->fetchall();
 
             
-            $sql=$connexion->prepare("SELECT prixAchat,title,image
-                        from produit;");
+            $sql=$connexion->prepare("SELECT id_P,prixAchat,title,image
+                        from produit
+                        ORDER BY comp DESC
+                        limit 10
+                        ;");
             $sql->execute();
             $res1=$sql->fetchall();
 
-
-            //$sql="SELECT password from client where username='$username ;";
-          
-            /*
-            $reqq=$connexion->prepare("SELECT password from client where username='$username' ;");
-            $reqq->execute();
-            $ress=$reqq->fetchall();
-
-           
-    
-            echo "<pre>"; echo print_r($ress); echo "</pre>";
-            */
+            $aip=$_SERVER['REMOTE_ADDR'];
             
+
+            $sql=$connexion->prepare("INSERT INTO visiteur(adresseip) VALUES('$aip') ;");
+            $sql->execute();
+            $connexion=NULL;
         }
 
         catch(PDOException $e){
@@ -88,8 +84,7 @@
 
      <div class="nav">
         <ul >
-                   
-                    <li><a href="index.php"> Home</a></li>
+                   <li><a href="index.php"> Home</a></li>
 
                     <li><a href="">Categorie</a>
                         <ul>
@@ -159,10 +154,9 @@
 
         <div class="prod">
     
-            <?php  
+            <?php 
                 foreach($res as $ind=>$val){
                     echo '<div class="box3">';
-
                 echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
@@ -194,9 +188,12 @@
           <div class="placer" data-flickity='{ "groupCells": true }'>
              
           <?php 
+                 $id=0;
                  foreach($res1 as $ind=>$val){
+                      $id=$res1[$ind]['id_P'];
                     echo '<div class="box">';
-                        echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%;">';
+                    echo "<a href='achat.php?id=$id' target='_blank'>";
+                        echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%;">';
                             
                             echo   "<h4>";
                             echo $res1[$ind]['title'];
@@ -222,9 +219,13 @@
         <div class="containerr">
             <div class="placer" data-flickity='{ "groupCells": true }'>
         <?php
+           $id=0;
               foreach($res1 as $ind=>$val){
                     echo '<div class="box">';
-                        echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                      $id=$res1[$ind]['id_P'];
+          
+                      echo "<a href='achat.php?id=$id' target='_blank'>";
+                      echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
                             echo $res1[$ind]['title'];

@@ -73,18 +73,64 @@
 </div>
 </nav>
 
+
+<?php
+     $id=isset($_GET["id"]) ? $_GET["id"] : -1;
+       
+       $servername="localhost";
+       $username="root";
+       $password="";
+       $db="e-commerce";
+
+     try{
+        $conn=new PDO("mysql:host=$servername;dbname=$db",$username,$password);
+        $conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+          
+         $req=$conn->prepare("SELECT * from produit where id_P=$id");
+           $req->execute();
+              $res=$req->fetch();
+
+             $req=$conn->prepare("update produit set comp=comp+1 where id_P=$id");
+                $req->execute();
+
+            //  echo "<pre>".print_r($res)."</pre>";
+     }
+
+     catch(PDOException  $e){
+         echo "Erreur : ".$e->getMessage();
+     }
+
+?>
+
 <section id="achat">
     <div class="produit">
-        Produit
+         <div class="image">
+            <?php
+                     echo '<img src="data:image;base64,'.base64_encode($res['image']).'" style="width:100%; height:80%; " >';
+            ?>
+            </div>
 
+         <div class="info">
+              <?php 
+                    echo "<h2>".$res['title']."</h2>";
+                    echo "<h4> <b>Marque</b> : ".$res['marque']."</h4>";
+                    echo "<h4> <b>Couleur</b> : ". $res['couleur']."</h4>";
+                    echo "<h4> <b>Stock</b> : ".$res['qte_stock']."</h4>";
+                    echo "<u><h3>".$res['prixAchat']." Dhs</h3></u>";
+                    echo '<input type="button" value="Acheter">';
+
+
+                    echo '<h3>Description</h3>';
+                    echo "<p>".$res['description']."</p>";
+                        
+        
+
+                    ?>
+         </div>
     </div>
 
 
-    <div class="produit">
-        Description
-
-    </div>
-
+   
 </section>
 
 
