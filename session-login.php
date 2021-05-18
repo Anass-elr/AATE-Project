@@ -4,9 +4,17 @@
 $serveur="localhost";
 $loginn="root";
 $password=""; 
+  
+ function Sec($data){
+     return htmlspecialchars(trim($data));
+ }
 
-  $login= isset($_POST['login']) ? $_POST['login'] : '';
-  $pass= isset($_POST['pass']) ? $_POST['pass'] : '';
+ 
+ $v1=Sec($_POST['login']);
+ $v2=Sec($_POST['pass']);
+
+  $login= isset($v1) ? $v1: '';
+  $pass= isset($v2) ? $v2 : '';
 
 try{
    $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$loginn,$password);
@@ -16,18 +24,31 @@ try{
 
     $reqq=$connexion->prepare("SELECT password from client where username='$login' ;");
     $reqq->execute();
-    $ress=$reqq->fetchall();
- }
+    $ress=$reqq->fetch();
+
+}
 
 catch(PDOException $e){
    echo $e->getMessage();
 }
 
- if($login==''){
-        header('Location: conn.php?error=1');
+ $login_root="root";
+ $pass_root="root21";
+
+  
+  if($login=='' || $pass==''){
+         header('Location: conn.php?error=1');
+    }
+  elseif ($login==$login_root && $pass==$pass_root) {
+        session_start();
+        $_SESSION['root']=True;
+        $_SESSION['login']=$login_root;
+        $_SESSION['password']=$pass_root;
+        $_SESSION['logged']=true;
+        header("Location: root.php?a=1");
     }
 
-  elseif($pass != $ress['0']['password'])  {
+  elseif(empty($ress)  || $pass != $ress['password'])  {
         header('Location: conn.php?error=2&password');
     }
     else{
@@ -35,8 +56,18 @@ catch(PDOException $e){
         $_SESSION['login']=$login;
         $_SESSION['password']=$pass;
         $_SESSION['logged']=true;
+        $aip=$_SESSION['idp'];
 
-        header('Location: indexx.php');
+        $reqq=$connexion->prepare("SELECT id_V from visiteur where adresseip='$aip' ;");
+        $reqq->execute();
+        $ress=$reqq->fetch(PDO::FETCH_ASSOC);
+        $ress=$ress['id_V'];
+
+        $reqq=$connexion->prepare("UPDATE client SET id_V=$ress where username='$login' ");
+        $reqq->execute();
+        
+
+        header('Location: index.php');
     }
 
 ?> 

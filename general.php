@@ -1,6 +1,6 @@
-<?php
-    require_once('session-verfi.php');
+<php
 ?>
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -10,6 +10,6 @@
     <title>Document</title>
 </head>
 <body>
-    <h1>Binevenue <?php  echo $login; ?> </h1>
+    
 </body>
 </html>

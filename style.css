@@ -50,8 +50,10 @@ div.sinscrire{
     background-color:rgba(0, 0, 0, 0.938);
     padding-bottom: 3px;
     color: rgb(233, 233, 233);
+   
     display: flex;
-  }
+}
+
 
   .fshop{
       width: 8%;
@@ -69,13 +71,16 @@ div.sinscrire{
   }
 
   .banda .nav ul li a{
-      font-weight: 500;
+    font-weight: 600;
+    font-size: 16px;
   }
 
-  .banda .nav ul li:hover a {
-    font-weight: 600;
-    font-size: 17px;
-  }
+  .banda .nav ul li:hover a{
+    font-weight: 700;
+}
+  
+
+ 
 
   .banda:after{
       content: '';
@@ -125,6 +130,7 @@ div.sinscrire{
         display: none;
         top: 100%;
         left: 0;
+        width: 180px;
     }
 
     .banda ul ul li a {
@@ -159,13 +165,6 @@ div.sinscrire{
 
     
 
-
-    
-
-
-
-
-
 /*****    NAV  *****/
 
 
@@ -174,11 +173,9 @@ div.sinscrire{
  /*****    MAIN1  *****/
  #First-section {
      min-height: 356px;
-     background-color: #F5F5F5;
+     background-color: #EAEBEF;
      padding-top: 30px;
-    
-    
-}
+    }
 
 #First-section .barre{
     background-color: red;
@@ -196,7 +193,7 @@ div.sinscrire{
 #First-section .prod {
     display: flex;
     background-color: #FFFFFF;
-    min-height: 260px;
+    min-height: 280px;
     border-radius: 0px 0px 6px 6px ;
     padding: 8px 6px;
 }
@@ -205,26 +202,24 @@ div.sinscrire{
 #First-section .box3 {
     margin-right: 16px;
     border-radius: 4px 4px 4px 4px;
-    width: 20%;
     box-sizing: border-box;
-    background-color: #f5f5f5;
-    height: 260px;
+    background-color: #f5f5f5; 
+     width: 20%;
+    height: 280px;
     text-align: center;
     border: 1px solid  #240b0b18;
     border-radius: 6px 6px 6px 6px;
 }
+.box3 h4{
+    margin-bottom: -4px;
+}
 
-.box3 {
-    margin-right: 16px;
-    border-radius: 4px 4px 4px 4px;
-  
-    box-sizing: border-box;
-    background-color: #f5f5f5; 
-     width: 20%;
-    height: 260px;
-    text-align: center;
-    border: 1px solid  #240b0b18;
-    border-radius: 6px 6px 6px 6px;
+.box3 h4:last-child{
+    margin-bottom: -8px;
+}
+.box3 s {
+    font-size: 14px;
+   
 }
 
 .box3 a{  
@@ -234,6 +229,10 @@ div.sinscrire{
 .box3:hover{
     transform: scaleY(1.03);
     box-shadow: 5px 5px 15px 5px #D4D5D0 ;
+}
+
+.box3 + h4 ,.box + h4{
+    text-transform: uppercase;
 }
 
 #First-section .box3 .promo{
@@ -269,29 +268,39 @@ div.sinscrire{
 
 #third-section,#fourth-section{
     min-height:418px;
+    background-color: #EAEBEF;
+}
+
+#third-section span,#fourth-section span {
+    font-size: 24px;
+    font-weight: 700;
+    color:#DC143C;
+    margin-left:4%;
+ 
 }
 
 
-.placer{
+
+#third-section .placer{
    margin: 10px;  
    padding-left: 20px;
    padding-top: 16px;
    margin-bottom: 10px;
+   width: 100%;
 }
 
 
  .box{
-    float: left;
     width: 19%;
-    height: 270px;
+    height: 280px;
     background-color:#F5F5F5 ;
     margin:8px 6px;
     border: 1px solid none;
     border-radius: 4px;
-    position: relative;
     box-sizing: border-box;
     border: 1px solid  #240b0b18;
     text-align:center;
+    float:left;
 }
 
 .box:hover{
@@ -304,6 +313,16 @@ div.sinscrire{
 .box a {
     color: black;
 }
+
+.pshow  {
+  width: 95%;
+}
+
+.pshow .box{
+    width: 18%;
+}
+
+
 
 
 
@@ -381,20 +400,21 @@ footer{
 
 
 #conn {
-    padding:8% 34%;
+    padding:4% 34%;
     background-color: #F2F2F2;
-    height: 1000px;
+   
 }
+
 
 
 
 #conn .form{
     background-color: #FFFFFF;
-   
-        padding: 36px 0px 10px 40px;
-
-        border-radius: 8px;
+    padding: 36px 0px 10px 40px;
+     border-radius: 4px;
+    
 }
+
 
 
 #conn .form label {
@@ -402,7 +422,7 @@ footer{
     color: rgba(0, 0, 0, 0.651);
 }
 
-#conn .form input{
+#conn .form form input{
     width: 85%;
     height: 38px;
     background-color: #F2F2F2;
@@ -436,10 +456,46 @@ footer{
     font-size: 15px;
 }
 
+#conn .form  {
+    position: relative;
+    border: 1px solid #240b0b38;
+    border-radius: 4px;
+}
+
+#conn .form h1 {
+  font-size: 32px;
+  text-align:center;
+  margin-right:42px;
+  margin-top:0px;
+  margin-bottom:px;
+  position: relative;
+  top:-16px;
+
+}
+
+#conn .form form label {
+    display: block;
+    color: black;
+}
+
+#conn .form form textarea{
+    width: 86%;
+    height: 70px;
+    background-color: #F2F2F2;
+    border: 1px solid rgba(0, 0, 0, 0.068);
+    position:relative;
+    right:10px;
+}
+
+#conn .form form input[type="file"]{
+    background-color:white;
+    
+    border:none;
+}
+
 
 #achat{
-    background-color: #f2f2f2e7;
-    height:1500px;
+    background-color: #f2f2f2e7; 
     padding: 5%;
     padding-top: 5%;
    
@@ -499,7 +555,7 @@ footer{
     font-size: 22px;
 }
 
-#achat .produit .info input{
+#achat .produit .info .panier{
     width: 50%;
     height: 40px;
     background-color:rgb(255, 153, 0);
@@ -508,9 +564,251 @@ footer{
     border: none;
     font-size: 15px;
     margin-top: 10px;
+    text-align: center;
+    padding-top: 6px;
+}
+#achat .produit .info  .panier span {
+    font-size: 17px;
+   
 }
 
-#achat .produit .info input:hover{
+#achat .produit .info div.panier:hover{
     background-color: #F68B1E;
 }
+
+
+#achat .produit .info h3 , #achat .produit .info p {
+    color: black;
+}
+
+
+.panierr {
+    width: 20%;
+    height: 40px;
+    background-color:rgb(255, 153, 0);
+    border-radius: 4px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    margin-top: 10px;
+    text-align: center;
+    padding-top: 6px;
+}
+
+
+/*
+.container{
+    width:480px;
+    height:200px;
+} 
+*/
+
+*{
+  padding:0;
+  margin:0;
+}
+
+
+.pere{
+  display:flex;
+}
+
+
+.containner{
+    width:550px;
+    height:320px;
+    margin-left:50px;
+ }
+
+.containner h3{
+    text-align:center;
+    font-size:24px;
+    margin-bottom:4px;
+} 
+
+
+.pere{
+  display:flex;
+}
+
+.stat{
+    padding:20px;
+    display:flex;
+   // text-align:center;
+    
+}
+.stat a:first-child{
+ 
+  margin-left:34%; 
+  margin-right:8px;
+}
+
+.statistic { 
+      width: 200px;
+      height: 40px;
+      background-color:rgb(255, 153, 0);
+      color: white;
+      border: none;
+      font-size: 15px;
+      text-align: center;
+      padding-top: 6px;
+     
+  }
+
+  .statistic span {
+      font-weight:600;
+      position: relative;
+      top:5px;
+  }
+
+
+  
+  a.lien {
+    color:black;
+    margin-left:10px;
+}
+
+
+.cont .pone{
+     width: 100%;
+     padding-top:10px;
+     padding:3%;
+ //  background-color:red;
+    
+}
+
+
+.cont .ptow{
+        width: 30%;
+      
+    }
+
+.pone header{
+  text-align: center;
+//  margin-top 20px;
+
+  font-size:18px;
+   background-color:black;
+  // background-color:#009879;
+  color:#E9E9E9;
+  padding:2px;
+  width:80%;
+  margin-left:60px;
+}
+
+.pd{
+   // padding:40px;
+    padding-top:30px;
+  // padding-left:60px;
+    width:80%;
+    margin:auto;
+}
+
+.pone .d1{
+    width:28%;
+    height:200px;
+    float:left;
+    
+    margin:5px;
+ //  padding-left:7%;
+  
+    box-sizing:border-box;
+    text-align:center;
+   //  background-color:black;
+}
+
+.pone .d1 span{
+    display:block;
+    margin-top:10px;
+    font-size:18px;
+    font-weight:600;
+}
+
+
+.fdemande{
+    padding:4%;
+}
+
+.demande{
+   
+    width:92%;
+}
+
+.dd{
+    height:40px;
+}
+
+
+
+table{
+    border-collapse:collapse;
+    border-radius:5px 5px 0px 0px;
+    overflow:hidden;
+    box-shadow:0 0 20px rgba(0, 0, 0, 0.15);
+    
+  }
+
+  th{
+      padding:15px 50px;
+      text-align:left;
+   }
+   
+   tr:nth-of-type(odd){
+      background-color:#f2f2f2;
+      font-weight:Bold;
+      color:  #005B48;
+      font-size:16px;
+  }
+
+
+  tr:nth-of-type(even){
+      font-weight:600;
+      color:   #191919;
+      font-size:16px;
+  }
+
+
+  tr.firstcolor{
+        background-color: #009879;
+        color:#FFF;
+        font-size:18px;
+  }
+
+  tr{
+    border-bottom:1px solid #dddddd;
+    
+  }
+
+  tr:last-of-type{
+    border-bottom:2px solid #009879;
+  }
+
+  
+
+  td{
+    //  padding:10px;
+      padding:0px 50px;
+      text-align:left;
+  }
+
+  table{
+     width:100%;
+  }
+
+  .statisticc { 
+          width: 100px;
+          height: 30px;
+          background-color:#32CD32;
+          color: white;
+          border: none;
+          font-size: 15px;
+          text-align: center;
+          padding-top: 6px;
+          margin-bottom:2px;
+
+  }
+
+  .refuser{
+      background-color:#DC143C;
+  }
 

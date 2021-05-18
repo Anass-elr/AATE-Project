@@ -50,101 +50,19 @@ $pass="";
   try{
     $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
      $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
-        
-
-     /*
-     $connexion -> exec("CREATE DATABASE test");
-     echo "Creation reussite"; 
-     */
-     /*
-     $codesql="CREATE TABLE test( 
-         idt INTEGER PRIMARY KEY,
-         name VARCHAR(20)
-         )";
-     $connexion ->exec($codesql); 
-     echo "table créee";
-     */
      
      $requete=$connexion->prepare("SELECT title,prixAchat,image,id_P from produit where marque='Xiaomi' ");
      $requete -> execute();
      $resultat= $requete -> fetchall();
-
-           
-    }
-
-
-
+  }
 catch(PDOException $e){
     echo $e->getMessage();
  }
+ 
    ?>
 
-<nav class="banda">
+<?php require('header.php'); ?>
 
-<div class="fshop"><h2>Fshop</h2></div>
-
-<div class="nav">
-  <ul >
-             
-              <li><a href="index.php"> Home</a></li>
-
-              <li><a href="">Categorie</a>
-                  <ul>
-                      <li><a href="electro.php">Electronique</a>
-                          <ul>
-                              <li><a href="tele.php">Telephone</a>
-                                  <ul>
-                                       <li><a href="sumsung.php">Sumsung</a></li>
-                                       <li><a href="iphone.php">Apple</a></li>
-                                       <li><a href="xiaomi.php">Xiaomi</a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="pc.php">PC</a>
-                                 <ul>
-                                       <li><a href="">HP</a></li>
-                                       <li><a href="dell.php">Dell</a></li>
-                                       <li><a href="">Apple</a></li>
-                                  </ul>
-                          
-                          
-                                 </li>
-                              <li><a href="">Acessoirs</a></li>
-                              <li><a href="">M&Q</a></li>
-                          </ul>
-                  
-                      </li>
-                      <li><a href="vetem.php">Vetements</a>
-                          <ul>
-                              <li><a href="">Homme</a></li>
-                              <li><a href="">Femme</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="mb.php">Montre et Bijoux</a>
-                      <ul>
-                                       <li><a href="">Montre</a></li>
-                                       <li><a href="">Bijoux</a></li>
-                                      
-                                  </ul>
-                  
-                          </li>
-                  </ul>
-              </li>
-
-              <li><a href="#fifth-section">A propos de nous  </a></li>
-              <li><a href="#fin">Contacter Nous</a></li>
-               </ul>
-
-
-          <ul class="right">
-               <li><a href="conn.php" >Se connecter</a></li>
-               <li><a href="deco.php">se déconnecter</a></li>
-                  <li ><a href="">Panier</a></li>
-               </ul>
-
-</div>
-
-
-</nav>
 
     <section id="third-section">
         <div class="container">

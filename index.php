@@ -1,15 +1,5 @@
 <?php
- /*
-   session_start();
-    if(!isset( $_SESSION['logged']) || !$_SESSION['logged']){
-          session_unset();
-          session_destroy(); 
-          $_SESSION = array();
-    }
-    
-    $username= isset($_SESSION['login']) ? $_SESSION['login'] : '';
- */
-    
+ require '_header.php';
 ?>
 
 <!DOCTYPE html>
@@ -20,7 +10,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
     <title>Document</title>
-    <link rel="stylesheet" href="https://unpkg.com/flickity@2.0.11/dist/flickity.min.css">
+   
     <style>
         .box3 a{  
              color:#1F1F1F;
@@ -29,12 +19,18 @@
          .box a{  
              color:#1F1F1F;
          }
+
+         
+        .box3  h4, .box h4 {
+            text-transform: uppercase;
+        }
  
         </style>
    
 </head>
 <body>
-  <script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script>
+<script src="https://kit.fontawesome.com/0f99f3d970.js" crossorigin="anonymous"></script>
+  
     <?php 
   
       
@@ -43,10 +39,10 @@
         $pass="";
        
         try{
-           $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
+            $connexion = new PDO("mysql:host=$serveur;dbname=e-commerce",$login,$pass);
             $connexion -> setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
 
-            $req=$connexion->prepare("SELECT prix,P.title,P.image
+            $req=$connexion->prepare("SELECT prix,P.title,P.image,P.id_P,D.idpromo,P.prixAchat
                 from dispo_en D,produit P
                where D.id_P=P.id_P and D.idpromo=1 ;");
 
@@ -63,88 +59,30 @@
             $res1=$sql->fetchall();
 
             $aip=$_SERVER['REMOTE_ADDR'];
-            
+            $_SESSION['idp']=$aip;
 
             $sql=$connexion->prepare("INSERT INTO visiteur(adresseip) VALUES('$aip') ;");
             $sql->execute();
+
+            $sql=$connexion->prepare("SELECT id_P,prixAchat,title,image
+                        from produit
+                        ORDER BY Qv DESC
+                        limit 10
+                        ;");
+            $sql->execute();
+            $res11=$sql->fetchall();
+
+            
+
             $connexion=NULL;
         }
 
         catch(PDOException $e){
            echo $e->getMessage();
         }
-
-
     ?>
 
-
- <nav class="banda">
-
-      <div class="fshop"><h2>Fshop</h2></div>
-
-     <div class="nav">
-        <ul >
-                   <li><a href="index.php"> Home</a></li>
-
-                    <li><a href="">Categorie</a>
-                        <ul>
-                            <li><a href="electro.php">Electronique</a>
-                                <ul>
-                                    <li><a href="tele.php">Telephone</a>
-                                        <ul>
-                                             <li><a href="sumsung.php">Sumsung</a></li>
-                                             <li><a href="iphone.php">Apple</a></li>
-                                             <li><a href="xiaomi.php">Xiaomi</a></li>
-                                        </ul>
-                                    </li>
-                                    <li><a href="pc.php">PC</a>
-                                       <ul>
-                                             <li><a href="">HP</a></li>
-                                             <li><a href="dell.php">Dell</a></li>
-                                             <li><a href="">Apple</a></li>
-                                        </ul>
-                                
-                                
-                                       </li>
-                                    <li><a href="">Acessoirs</a></li>
-                                    <li><a href="">M&Q</a></li>
-                                </ul>
-                        
-                            </li>
-                            <li><a href="vetem.php">Vetements</a>
-                                <ul>
-                                    <li><a href="">Homme</a></li>
-                                    <li><a href="">Femme</a></li>
-                                </ul>
-                            </li>
-                            <li><a href="mb.php">Montre et Bijoux</a>
-                            <ul>
-                                             <li><a href="">Montre</a></li>
-                                             <li><a href="">Bijoux</a></li>
-                                            
-                                        </ul>
-                        
-                                </li>
-                        </ul>
-                    </li>
-
-                    <li><a href="#fifth-section">A propos de nous  </a></li>
-                    <li><a href="#fin">Contacter Nous</a></li>
-                     </ul>
-
-
-                <ul class="right">
-                     <li><a href="conn.php" >Se connecter</a></li>
-                     <li><a href="deco.php">se déconnecter</a></li>
-                        <li ><a href="">Panier</a></li>
-                     </ul>
-
-    </div>
-  
-
-    </nav>
-  
-    
+  <?php require('header.php'); ?>
 
     <section id="First-section">
       <div class="container">
@@ -156,8 +94,11 @@
     
             <?php 
                 foreach($res as $ind=>$val){
+                    $idp= $res[$ind]['id_P'];
+                    $idpr= $res[$ind]['idpromo'];
                     echo '<div class="box3">';
-                echo '<a href="achat.php" target="_blank"><img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
+                    echo "<a href='achat.php?idp=$idp&idpr=$idpr'>";
+                echo '<img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
                             echo $res[$ind]['title'];
@@ -165,8 +106,9 @@
                             echo"</h4>";
 
                             echo"<h4>";
-                            echo "Prix:  ".$res[$ind]['prix']."  Dh"; 
+                            echo "".$res[$ind]['prix']."  Dh"; 
                             echo "</h4> </a>";
+                            echo "<s>".$res[$ind]['prixAchat']."</s>";
                     echo '</div>';
                 }
 
@@ -180,9 +122,9 @@
     
     
     <section id="third-section">
-        <div class="titre banda">
-              <h1>Les Plus Visités </h1>
-           </div>  
+        
+        <span>  Les Plus Visités </span>
+           
            
         <div class="containerr">
           <div class="placer" data-flickity='{ "groupCells": true }'>
@@ -192,7 +134,7 @@
                  foreach($res1 as $ind=>$val){
                       $id=$res1[$ind]['id_P'];
                     echo '<div class="box">';
-                    echo "<a href='achat.php?id=$id' target='_blank'>";
+                    echo "<a href='achat.php?id=$id'>";
                         echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%;">';
                             
                             echo   "<h4>";
@@ -200,7 +142,7 @@
                             echo"</h4>";
 
                             echo"<h4>";
-                            echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
+                            echo "".$res1[$ind]['prixAchat']."  Dh"; 
                             echo "</h4></a>";
                     echo '</div>';
                  }
@@ -212,9 +154,9 @@
 
 
     <section id="fourth-section">
-         <div class="titre">
-            <h1>Les Plus Vendus </h1>
-         </div>
+    
+            <span>  Les Plus Vendus </span>
+         
 
         <div class="containerr">
             <div class="placer" data-flickity='{ "groupCells": true }'>
@@ -222,18 +164,18 @@
            $id=0;
               foreach($res1 as $ind=>$val){
                     echo '<div class="box">';
-                      $id=$res1[$ind]['id_P'];
+                      $id=$res11[$ind]['id_P'];
           
-                      echo "<a href='achat.php?id=$id' target='_blank'>";
-                      echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%; " >';
+                      echo "<a href='achat.php?id=$id'>";
+                      echo '<img src="data:image;base64,'.base64_encode($res11[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
-                            echo $res1[$ind]['title'];
+                            echo $res11[$ind]['title'];
                                             
                             echo"</h4>";
 
                             echo"<h4>";
-                            echo "Prix:  ".$res1[$ind]['prixAchat']."  Dh"; 
+                            echo "".$res11[$ind]['prixAchat']."  Dh"; 
                             echo"</h4>";
 
                             echo '</a>';

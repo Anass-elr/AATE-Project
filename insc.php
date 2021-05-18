@@ -1,3 +1,6 @@
+<?php 
+             $message=isset($_GET['message']) ? $_GET['message'] : '';
+        ?>
 
 <!DOCTYPE html>
 <html lang="en">
@@ -51,72 +54,8 @@
     ?>
 
 
-<nav class="banda">
+<?php require('header.php'); ?>
 
-<div class="fshop"><h2>Fshop</h2></div>
-
-<div class="nav">
-  <ul >
-             
-              <li><a href="index.php"> Home</a></li>
-
-              <li><a href="">Categorie</a>
-                  <ul>
-                      <li><a href="electro.php">Electronique</a>
-                          <ul>
-                              <li><a href="">Telephone</a>
-                                  <ul>
-                                       <li><a href="">Sumsung</a></li>
-                                       <li><a href="">Apple</a></li>
-                                       <li><a href="">Xiaomi</a></li>
-                                  </ul>
-                              </li>
-                              <li><a href="">PC</a>
-                                 <ul>
-                                       <li><a href="">HP</a></li>
-                                       <li><a href="">Dell</a></li>
-                                       <li><a href="">Apple</a></li>
-                                  </ul>
-                          
-                          
-                                 </li>
-                              <li><a href="">Acessoirs</a></li>
-                              <li><a href="">M&Q</a></li>
-                          </ul>
-                  
-                      </li>
-                      <li><a href="">Vetements</a>
-                          <ul>
-                              <li><a href="">Homme</a></li>
-                              <li><a href="">Femme</a></li>
-                          </ul>
-                      </li>
-                      <li><a href="">Montre et Bijoux</a>
-                      <ul>
-                                       <li><a href="">Montre</a></li>
-                                       <li><a href="">Bijoux</a></li>
-                                      
-                                  </ul>
-                  
-                          </li>
-                  </ul>
-              </li>
-
-              <li><a href="#fifth-section">A propos de nous  </a></li>
-              <li><a href="#fin">Contacter Nous</a></li>
-               </ul>
-
-
-          <ul class="right">
-               <li><a href="conn.php" >Se connecter</a></li>
-               <li><a href="deco.php">se déconnecter</a></li>
-                  <li ><a href="">Panier</a></li>
-               </ul>
-
-</div>
-
-
-</nav>
   
 <section id="conn">
   <div class="form">
@@ -125,10 +64,32 @@
            Username  &nbsp       <input type="text" name="username"><br>
            Password &nbsp &nbsp    <input type="password" name="pass"><br>
            Email  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp<input type="text" name="email"><br>
-           Adresse &nbsp &nbsp    <input type="text" name=""><br>
-           Nom &nbsp &nbsp    <input type="text" name=""><br>
-           Prenom &nbsp &nbsp    <input type="text" name=""><br>
-           N'tele &nbsp &nbsp    <input type="text" name=""><br>
+           Adresse &nbsp &nbsp    <input type="text" name="adresse"><br>
+           Nom &nbsp &nbsp    <input type="text" name="nom"><br>
+           Prenom &nbsp &nbsp    <input type="text" name="prenom"><br>
+           N'tele &nbsp &nbsp    <input type="text" name="tele"><br>
+
+           <?php
+                switch($message){
+                    case 1:
+                        echo "<b>Saisire tous les champs svp</b>";
+                        break;
+
+                        case 2:
+                            echo "<b>Les informations Non compatible</b>";
+                            break;
+
+                    case 3 :
+                        echo "<b>Username déjà utilisé </b>";
+                        break;
+
+                        case 4 :
+                            echo "<b>Email déjà utilisé </b> <br>";
+                            break;
+                }
+
+                echo "<br>";
+              ?>
 
             <input type="submit" value="S'inscrire">
         
@@ -136,13 +97,6 @@
     </div>
 
     </section>
-
-        <?php 
-         $message=isset($_GET['message']) ? $_GET['message'] : '';
-           if($message==1){
-                 echo "<b>Saisire tous les champs svp</b>";
-           }
-        ?>
 
   </div>
 
