@@ -8,7 +8,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css" type="text/css">
     <title>Document</title>
    
     <style>
@@ -24,11 +24,16 @@
         .box3  h4, .box h4 {
             text-transform: uppercase;
         }
+
+
+        
+    
  
         </style>
    
 </head>
 <body>
+
 <script src="https://kit.fontawesome.com/0f99f3d970.js" crossorigin="anonymous"></script>
   
     <?php 
@@ -101,7 +106,7 @@
                 echo '<img src="data:image;base64,'.base64_encode($res[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
-                            echo $res[$ind]['title'];
+                                echo  substr($res[$ind]['title'], 0, 18).'...';
                                             
                             echo"</h4>";
 
@@ -122,13 +127,13 @@
     
     
     <section id="third-section">
-        
-        <span>  Les Plus Visités </span>
+         <span>  Les Plus Populaires </span>
            
            
-        <div class="containerr">
-          <div class="placer" data-flickity='{ "groupCells": true }'>
-             
+        <div class="containerr" >
+            
+          <div class="placer" data-flickity='{ "groupCells": true }' >
+              
           <?php 
                  $id=0;
                  foreach($res1 as $ind=>$val){
@@ -138,7 +143,7 @@
                         echo '<img src="data:image;base64,'.base64_encode($res1[$ind]['image']).'" style="width:100%; height:80%;">';
                             
                             echo   "<h4>";
-                            echo $res1[$ind]['title'];
+                            echo substr($res1[$ind]['title'],0,18).'...';
                             echo"</h4>";
 
                             echo"<h4>";
@@ -155,7 +160,7 @@
 
     <section id="fourth-section">
     
-            <span>  Les Plus Vendus </span>
+            <span> Les Plus Vendue  </span>
          
 
         <div class="containerr">
@@ -170,7 +175,7 @@
                       echo '<img src="data:image;base64,'.base64_encode($res11[$ind]['image']).'" style="width:100%; height:80%; " >';
                             
                             echo   "<h4>";
-                            echo $res11[$ind]['title'];
+                            echo substr($res11[$ind]['title'],0,18).'...';
                                             
                             echo"</h4>";
 
@@ -189,6 +194,30 @@
 
 
 
+     <section id="categ">
+        <h2> Nos Categories </h2>
+         <div class="container">
+        
+          <div class="ncategorie">
+          
+                <a href=""> <div>    <i class="fas fa-mobile-alt  fa-5x "></i>  <label>Telephone<label>   </div></a>
+                <a href=""> <div> PPF  </div></a>
+                <a href=""> <div> PPF  </div></a>
+
+                <a href=""> <div> PPF  </div></a>
+                <a href=""> <div> PPF  </div></a>
+                <a href=""> <div> PPF  </div></a>
+
+                <a href=""> <div> PPF  </div></a>
+                <a href=""> <div> PPF  </div></a>
+                <a href=""> <div> PPF  </div></a>
+
+
+          </div>
+         </div>
+      </section>
+
+
     <section id="fifth-section">
         <div class="container">
             <div class="about-us">
@@ -202,6 +231,8 @@
                 </p>
             </div>
 
+
+    
 
         <div class="contact"  id="fin">
             <h2>Contacter Nous</h2>

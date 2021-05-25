@@ -47,10 +47,9 @@ div.sinscrire{
 
 /*****    Header   *****/
  .banda{
-    background-color:rgba(0, 0, 0, 0.938);
+    background-color:#ECEBF0;
     padding-bottom: 3px;
-    color: rgb(233, 233, 233);
-   
+    color:#767676;
     display: flex;
 }
 
@@ -61,17 +60,26 @@ div.sinscrire{
 
   .fshop h2{
       text-align: center;
-      margin-top: 4px;
-      font-size: 28px;
+      margin-top: 2px;
+      font-size: 33px;
       margin-left: 30px;
+      margin-right: 10px;
   }
 
   .banda .nav{
       width: 92%;
+     
+  }
+
+  .banda .nav li a {
+    color:#767676;
+    font-weight: 700;
+    font-size: 17.5px;
+}
   }
 
   .banda .nav ul li a{
-    font-weight: 600;
+    font-weight: 700;
     font-size: 16px;
   }
 
@@ -79,10 +87,7 @@ div.sinscrire{
     font-weight: 700;
 }
   
-
- 
-
-  .banda:after{
+.banda:after{
       content: '';
       clear: both;
       display: block;
@@ -90,13 +95,16 @@ div.sinscrire{
 
   .banda .nav ul{
       list-style: none;
-      margin: 0;
+    margin: 0;
+   
+     
   }
+ 
 
   .banda .nav ul:first-child {
-    margin-left: 20px;
-    
-  }
+    margin-left:32px;
+   
+    }
 
   .banda .nav .left {
  
@@ -119,7 +127,8 @@ div.sinscrire{
     }
 
     .banda .nav ul  li:hover a{
-        background-color: black;  
+        background-color: rgba(0, 0, 0, 0.884);  
+        color:white;
       
     }
    
@@ -172,9 +181,9 @@ div.sinscrire{
 
  /*****    MAIN1  *****/
  #First-section {
-     min-height: 356px;
-     background-color: #EAEBEF;
-     padding-top: 30px;
+    min-height: 345px;
+    background-color: #EAEBEF;
+    padding-top: 30px;
     }
 
 #First-section .barre{
@@ -192,10 +201,12 @@ div.sinscrire{
 
 #First-section .prod {
     display: flex;
-    background-color: #FFFFFF;
-    min-height: 280px;
+    background-color:#ECEBF0;
+    min-height: 260px;
+ 
     border-radius: 0px 0px 6px 6px ;
-    padding: 8px 6px;
+    padding: 8px 0px;
+    padding-left: 5px;
 }
 #First-section .barre h2{margin-top: 1px;}
 
@@ -203,9 +214,9 @@ div.sinscrire{
     margin-right: 16px;
     border-radius: 4px 4px 4px 4px;
     box-sizing: border-box;
-    background-color: #f5f5f5; 
-     width: 20%;
-    height: 280px;
+    background-color: white; 
+    width: 20%;
+    height: 260px;
     text-align: center;
     border: 1px solid  #240b0b18;
     border-radius: 6px 6px 6px 6px;
@@ -267,33 +278,39 @@ div.sinscrire{
 }
 
 #third-section,#fourth-section{
-    min-height:418px;
+    min-height: 370px;
     background-color: #EAEBEF;
+}
+
+#third-section{
+    min-height: 350px;
 }
 
 #third-section span,#fourth-section span {
     font-size: 24px;
     font-weight: 700;
-    color:#DC143C;
-    margin-left:4%;
- 
-}
+    color: #767676;
+    margin-left: 3.5%;
+ }
 
 
 
-#third-section .placer{
-   margin: 10px;  
-   padding-left: 20px;
-   padding-top: 16px;
-   margin-bottom: 10px;
-   width: 100%;
-}
+#third-section .placer,#fourth-section .placer{
+    margin: 10px;
+    margin-top: 16px;
+    /* padding-left: 20px; */
+    margin-bottom: 10px;
+    width: 100%;
+}  
+
+
+
 
 
  .box{
     width: 19%;
-    height: 280px;
-    background-color:#F5F5F5 ;
+    height: 260px;
+    background-color:white ;
     margin:8px 6px;
     border: 1px solid none;
     border-radius: 4px;
@@ -302,6 +319,9 @@ div.sinscrire{
     text-align:center;
     float:left;
 }
+
+
+
 
 .box:hover{
     transform: scaleY(1.05);
@@ -323,6 +343,41 @@ div.sinscrire{
 }
 
 
+#categ {
+    min-height: 180px;
+    background-color: #EAEBEF;
+}
+
+#categ h2 {
+    margin-bottom: 12px;
+}
+
+
+
+#categ .ncategorie {
+            display: flex;
+            flex-wrap: nowrap;
+        
+        /* margin-left: 120px; */
+}
+
+#categ .ncategorie a i {
+    display: block;
+    margin-left: 12px;
+    margin-bottom: 4px;
+}
+
+#categ .ncategorie a div  label{
+      font-weight: 700;
+        margin-right:6px;
+        
+}
+
+#categ .ncategorie a {
+    padding: 22Px;
+    color:red;
+    margin-left: 40px;
+}
 
 
 
@@ -811,4 +866,10 @@ table{
   .refuser{
       background-color:#DC143C;
   }
+
+
+}
+
+
+
 
