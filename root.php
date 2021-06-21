@@ -28,7 +28,7 @@
     <div class="pd">
     
             <div class="d1"> 
-               <a href="statistic.php" class="lien"><img src="st.png"> <span>Satistiques </span></a>
+               <a href="statistic.php" class="lien"><img src="st.png"> <span>&nbsp Satistiques </span></a>
             </div>
             
             <div class="d1">
@@ -36,18 +36,38 @@
             </div>
 
             <div class="d1">
-            <a href="lc.php" class="lien"><i class="fas fa-list fa-4x"></i> <span>Liste des clients <span></a>
+            <a href="lc.php" class="lien"><i class="fas fa-list fa-4x"></i> <span>&nbsp Liste des clients <span></a>
             </div>
 
             <div class="d1">
-            <a href="ajp.php" class="lien"><i class="fas fa-cart-plus fa-4x"></i></i><span>Ajouter Un produit</span></a>
+            <a href="ajp.php" class="lien"><i class="fas fa-cart-plus fa-4x"></i></i><span>&nbsp Ajouter Un produit</span></a>
             </div>
 
 
             <div class="d1">
-              <a href="ajpr.php" class="lien"><i class="fas fa-plus fa-4x"></i><span>Ajouter Une Promotion</a>
+              <a href="ajpr.php" class="lien"><i class="fas fa-plus fa-4x"></i><span>&nbsp Ajouter Une Promotion</a>
             </div>
 
+            <div class="d1">
+              <a href="message.php" class="lien"><i class="fas fa-envelope-square fa-4x"></i><span>&nbsp Boite Message</a>
+            </div>
+
+            <div class="d1">
+              <a href="commande.php" class="lien">
+         
+              <i class="fas fa-shopping-bag fa-4x"></i><span>&nbsp Commande</a>
+            </div>
+
+            <div class="d1">
+              <a href="produit.php" class="lien">
+               <i class="fab fa-product-hunt fa-4x"></i>
+                <span>&nbsp Produit</a>
+            </div>
+
+
+
+
+            
         </div>
 
     </div>

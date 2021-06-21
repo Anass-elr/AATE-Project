@@ -4,10 +4,11 @@
 </head>
 
 
-<script src="https://kit.fontawesome.com/0f99f3d970.js" crossorigin="anonymous"></script>
+<script src="https://kit.fontawesome.com/0f99f3d970.js" crossorigin="anonymous"></script> 
+<script src="https://kit.fontawesome.com/0f99f3d970.js" crossorigin="anonymous"></script> 
+<script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script> 
+<script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script>
 
-
-<script src="https://unpkg.com/flickity@2.0.11/dist/flickity.pkgd.min.js"></script>
 
 <nav class="banda fix">
 
@@ -15,7 +16,7 @@
 
      <div class="nav">
         <ul >
-                   <li><a href="index.php"> <i class="fas fa-home fa-lg"></i> Home</a></li>
+             <li><a href="index.php"> <i class="fas fa-home fa-lg"></i> Home</a></li>
 
                     <li><a href=""><i class="fas fa-align-justify fa-lg"></i>  Categorie</a>
                         <ul>
@@ -23,22 +24,22 @@
                                 <ul>
                                     <li><a href="affprod.php?idc=5"> <i class="fas fa-mobile-alt"></i>Telephone</a>
                                         <ul>
-                                             <li><a href="sumsung.php.idc=5&marque=sumsung "><i class="fab fa-stripe-s"></i></i>Sumsung</a></li>
-                                             <li><a href="iphone.php"><i class="fab fa-apple"></i>Apple</a></li>
-                                             <li><a href="xiaomi.php">Xiaomi</a></li>
+                                             <li><a href="affprod.php?idc=5&marque=Sumsung"><i class="fab fa-stripe-s"></i></i>Sumsung</a></li>
+                                             <li><a href="affprod.php?idc=5&marque=Apple"><i class="fab fa-apple"></i>Apple</a></li>
+                                             <li><a href="affprod.php?idc=5&marque=Xiaomi">Xiaomi</a></li>
                                         </ul>
                                     </li>
                                     <li><a href="affprod.php?idc=6"><i class="fas fa-laptop"></i>PC</a>
                                        <ul>
-                                             <li><a href="">HP</a></li>
-                                             <li><a href="dell.php">Dell</a></li>
-                                             <li><a href="">Apple</a></li>
+                                             <li><a href="affprod.php?idc=6&marque=HP">HP</a></li>
+                                             <li><a href="affprod.php?idc=6&marque=Dell">Dell</a></li>
+                                             <li><a href="affprod.php?idc=6&marque=Apple">Apple</a></li>
                                         </ul>
                                 
                                 
                                        </li>
-                                    <li><a href=""><i class="fab fa-adn"></i>Acessoirs</a></li>
-                                    <li><a href=""><i class="fas fa-home"></i>M&Q</a></li>
+                                    <li><a href="affprod.php?idc=1&idc1=7"><i class="fab fa-adn"></i>Acessoirs</a></li>
+                                    <li><a href="affprod.php?idc=8"><i class="fas fa-home"></i>Maison & Quisine</a></li>
                                 </ul>
                         
                             </li>
@@ -52,7 +53,7 @@
 
 
                             <li><a href="affprod.php?idc=4"><i class="fas fa-gem"></i>Montre et Bijoux</a>
-                            <ul>
+                               <ul>
                                              <li><a href=""><i class="fas fa-watch"></i> Montre</a></li>
                                              <li><a href=""><i class="fas fa-gem"></i>Bijoux</a></li>
                                             

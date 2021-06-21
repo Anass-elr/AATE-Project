@@ -18,10 +18,17 @@
           background-color:#f5f5f5c9;
         }
 
-        #First-section {
-           min-height: 0px;
-    
+        #third-section {
+         height:1000px;
          }
+
+         .container {
+            margin: auto;
+            width: 88%;
+            overflow: hidden;
+        }
+        
+      
     </style>
 
 </head>
@@ -51,16 +58,43 @@ $pass="";
     }
 
    else{
-     $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
-                                        FROM  produit as P,de_  as	D
-                                        WHERE    D.id_P=P.id_P 
-                                        and   D.id_cat=$idc ;"
-                                   );
-     $requete -> execute();
-     $resultat= $requete -> fetchall();
-
-           
+     if( isset($_GET['idc']) && !isset($_GET['idc1']) && !isset($_GET['marque'])){
+        $requete=$connexion->prepare(" SELECT P.id_P,D.id_cat,title,prixAchat,P.image
+                                          FROM  produit as P,de_  as	D
+                                          WHERE    D.id_P=P.id_P 
+                                          and   D.id_cat=$idc ;"
+                                    );
+      $requete -> execute();
+      $resultat= $requete -> fetchall();
     }
+
+    elseif( isset($_GET['idc']) && isset($_GET['idc1']) && !isset($_GET['marque'])){
+      $idc1=isset($_GET['idc1']) ? $_GET['idc1'] : -1 ;
+      $requete=$connexion->prepare("SELECT P.id_P,D.id_cat,title,prixAchat,P.image
+         FROM  produit as P,de_ as D
+         WHERE  D.id_P=P.id_P and (D.id_cat=$idc or D.id_cat=$idc1)
+         GROUP BY P.id_P HAVING count(*)>=2");
+        $requete -> execute();
+        $resultat= $requete -> fetchall();
+    }
+    elseif(isset($_GET['idc']) && !isset($_GET['idc1']) && isset($_GET['marque'])){
+        $mr=isset($_GET['marque']) ? $_GET['marque'] : "";
+
+        $requete=$connexion->prepare("SELECT P.id_P,D.id_cat,title,prixAchat,P.image
+        FROM  produit  P,de_  D
+        WHERE  D.id_P=P.id_P and D.id_cat=$idc And P.marque='$mr';
+              ");
+       $requete -> execute();
+       $resultat= $requete -> fetchall();
+    }
+
+
+   }
+
+
+
+
+
 }
 
 
@@ -70,15 +104,8 @@ catch(PDOException $e){
    ?>
 
 <?php require('header.php'); ?>
-         
-
-      
-         
-    
-        
-         
     <section id="third-section" >
-        <div class="container pshow"> <br><h2>Smart Phone Iphone </h2><br>
+        <div class="container pshow"> <br><h2>Catalogue </h2><br>
           <div class="placer" >
              <?php
                 $id=0;
@@ -89,7 +116,7 @@ catch(PDOException $e){
                           echo '<img src="data:image;base64,'.base64_encode($resultat[$ind]['image']).'" style="width:100%; height:80%; " >';
                         
                           echo   "<h4>";
-                          echo $resultat[$ind]['title'];
+                          echo substr($resultat[$ind]['title'],0,18).'...';
                                       
                               echo"<h4>";
 
@@ -104,6 +131,8 @@ catch(PDOException $e){
         </div>
         </div>
       </section>
+
+      
 
 </body>
 </html>

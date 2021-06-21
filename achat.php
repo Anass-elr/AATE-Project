@@ -9,7 +9,26 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <style>
+
+
+input[type="button"]{
+       
+  margin-top:6px;
+    width: 35%;
+    height: 52px;
+    background-color:rgb(255, 153, 0);
+    border-radius: 4px;
+    color: white;
+    border: none;
+    font-size: 15px;
+    text-align: center;
+    font-size:17px;
+
     
+}
+
+    </style>
     <title>Document</title>
 </head>
 <body>
@@ -102,19 +121,23 @@
                       else{
                           echo "<u><h3 style='font-size:28px;'>".$res['prixAchat']." Dhs</h3></u>";
                         }
-                        echo "<br>";
-                    echo "<a href='addpanier.php?id=$id'>";
+                         echo "<br>";
+                    ?>
+                       
+                    <!--echo "<a href='addpanier.php?id=$id'>";
                     echo '<div class="panier"> <i class="fas fa-shopping-cart fa-lg"></i>';
                     echo ' <span> Ajouter au Panier </span>';
-                    echo '</div>';
+                    echo '</div>';-->
+                    <input type="button"  onClick="ajouter(<?php echo $id;?>) " value="Ajouter au Panier" name="ajoutep">
+                    
 
-
+                  <?php
                     echo '<h3>Description</h3>';
                     echo "<p>".$res['description']."</p>";
-                        
+                    ?>    
         
 
-                    ?>
+                    
          </div>
     </div>
 
@@ -126,5 +149,16 @@
 
 
 </nav>
+
+<script language="javascript">
+ 
+
+ 
+
+function ajouter(id){
+  window.location.href='addpanier.php?id='+id;
+     alert('Produit Ajouter au panier');  
+}
+</script>
 </body>
 </html>

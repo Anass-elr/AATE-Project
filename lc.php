@@ -15,6 +15,38 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style type="text/css">  
+       
+       .fdemande .demande table tr td{
+            height:40px;
+        }
+
+        .fdemande .demande h1 {
+            text-align:center;
+            margin-bottom: 20px;
+        }
+
+        
+input[type="button"]{
+       
+       margin-top:6px;
+         width:50%;
+         height: 40px;
+         background-color:rgb(255, 153, 0);
+         border-radius: 4px;
+         color: white;
+         border: none;
+         font-size: 15px;
+         text-align: center;
+         font-size:16px;
+         margin-left:10%;
+          padding-bottom:8px;         
+     }
+
+     input[type="button"]:hover{
+            background-color:red;
+        }
+     </style>
 </head>
 <body>
 
@@ -23,7 +55,7 @@
 
 <div class="fdemande">
   <div class="demande">
-      
+      <h1>Liste De Clients</h1>
     <table >
        <tr class="firstcolor"> <th>ID</th><th>username</th> <th>Password</th> <th>Email</th>
            <th>Accepter/refuser</th>
@@ -32,24 +64,44 @@
 
 <?php
 foreach($res as $tab){
-     echo "<tr>";
-            echo " <td>".$tab['id_client'];  echo "</td>";
-            echo " <td> Username:".$tab['username']; echo "</td>";
-            echo " <td>  Password:". $tab['password']; echo "</td>";
-            echo " <td> Email:".$tab['email'];  echo "</td>";
-              $id=$tab['id_client'];
-               echo " <td> <a href='AR.php?id=$id&SM=S'><div class=\"statisticc\">Supprimer</div></a>"; echo "</td>";
-                
-               echo "</tr>";
-      }
-
     ?>
-
+    <tr>
+        <td><?php echo $tab['id_client'];?></td> 
+           <td>  <?php echo $tab['username']; ?> </td>
+            <td>  <?php echo $tab['password'];?> </td>
+            <td>  <?php echo $tab['email'];?> </td>
+             <?php $id=$tab['id_client']; ?>
+              <!--<td> <a href='AR.php?id=$id&SM=S'><div class="statisticc">Supprimer</div></a></td>-->
+            <td> <input type="button" class="statistic" onClick="supprimer(<?php echo $id; ?>, 'S')" name="delete" value="Supprimer"> </td>
+              </tr>
+     <?php 
+         } 
+      ?> 
     
 </table>
 
 </div>
 </div>
+<script language="javascript">
+    function supprimer(id,s){
 
+         swal({
+          title: "Voulez vous supprimez ce utilisateur ? ",
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("Vueillez patientez!", {
+              icon: "success",
+            });
+            window.location.href='AR.php?id=' +id+'&SM=' +s+'';
+            return true;
+          }
+        });
+    }
+</script>
 </body>
 </html>
+

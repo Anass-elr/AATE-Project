@@ -41,6 +41,28 @@
         color:black;
       }
 
+      .final {
+        height:60px;
+        text-align:left;
+      }
+
+      .final label {
+        font-size:20px;
+      }
+
+      .final:first-child{
+        text-align:right;
+      }
+
+     
+
+      input[type="button"]{
+       
+        width:20%;
+        height:50px;
+        font-size:17px;
+        padding-bottom:7px;
+      }
 
   </style>
 </head>
@@ -64,7 +86,7 @@
                       echo "<tr>";
 
                     echo ' <td> <img src="data:image;base64,'.base64_encode($res1['image']).'"
-                         style="width:100%; height:80%;">'; echo"</td>";
+                         style="width:60%; height:100%;">'; echo"</td>";
                             
                             echo   "<td>";
                             echo $res1['title'];
@@ -83,15 +105,15 @@
                               echo '<i class="fas fa-trash fa-lg fa-color"></i>';
                               echo '</a> </td>'; 
 
-                         echo "</tr>";
+                            echo "</tr>";
                   $s=$s+$res1['prixAchat']*$_SESSION['panier'][$res1['id_P']];
                }
              
-               $_SESSION['somme']=$s;
+              $_SESSION['somme']=$s;
         ?>
 
 
-                  
+           <tr><td colspan="3"  class="final"> <label>La Somme En dirhams :</label> </td><td colspan="2"  class="final"> <label> <?php  echo $s. " Dh"; ?> </label></td> </tr>       
             
         
       
@@ -103,13 +125,34 @@
 
       <br><br><br><br>
 
-     
-      <a href='acheter.php?s='>; 
-        <div class="panierr"> <i class="fas fa-shopping-cart fa-lg"></i>
-                      <span> Acheter Maintenant </span>
-                    </div>
-        </a>
-  
+       <input type="button" value="Acheter Maintenant" onClick="test()" class="panierr" onClick="acheter()">
+    
+
+  <script language="javascript">
+    function test(){
+
+
+      swal({
+          title: "Voulez vous continuez vers la page d'achat ? ",
+        
+          icon: "warning",
+          buttons: true,
+          dangerMode: true,
+        })
+        .then((willDelete) => {
+          if (willDelete) {
+            swal("Vueillez patientez!", {
+              icon: "success",
+            });
+            window.location.href='acheter.php';
+            return true;
+          } else {
+            swal("Votre demande a été annuler!");
+          }
+        });
+        
+    }
+  </script>
 </body>
 </html>
 

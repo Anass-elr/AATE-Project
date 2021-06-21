@@ -70,14 +70,8 @@
                 else{
                    $Err="Entrez un Code";
                 }
-                
-                
-
-            }
-
-            
+    }
 ?>
-
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -85,16 +79,31 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <style>
+       #conn .form h2{
+            font-size:26px;
+            margin-left:10px;
+            margin-bottom:10px;
+        }
+    </style>
 </head>
 <body>
 
+<?php require('header.php'); ?>
+
+    <section id="conn">
+        <div class="form">
+        <h2>Entrez le code de votre carte</h2>
   <form action="acheter.php"  method="POST">
-        <label for="">Entrez le code de votre carte</label><input type="password" name="pass" placeholder=""><br>
-        <input type="radio" name="achat"><label for="">Livraison à domicile</label> <br>
-        <label for=""> </label><input type="radio" name="achat"><label for=""> Passer au store</label> <br>
+        <input type="password" name="pass" placeholder=""><br>
+      <!--  <input type="radio" name="achat"><label for="">Livraison à domicile</label> <br>
+        <label for=""> </label><input type="radio" name="achat"><label for=""> Passer au store</label> <br> -->
         <input type="submit" value="Envoyer">
          <?php echo $Err; ?>
-  </form> 
-    
+  </form>
+
+  </div></section>
+
+ 
 </body>
 </html>

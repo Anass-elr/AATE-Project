@@ -21,6 +21,10 @@
                 padding:10px;
             }
 
+            #conn{
+                min-height:800px;
+            }
+
     </style>
    
    
@@ -59,7 +63,7 @@
   
 <section id="conn">
   <div class="form">
-       
+      <h1>S'inscrire</h1>
         <form action="test-insc.php"  method="POST">
            Username  &nbsp       <input type="text" name="username"><br>
            Password &nbsp &nbsp    <input type="password" name="pass"><br>
