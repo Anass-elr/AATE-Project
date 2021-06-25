@@ -79,6 +79,16 @@
             min-height:1000px;
         }
 
+        form textarea{
+            color:black;
+        }
+
+        form input[type="file"]{
+            height:40px;
+            background-color:blue;
+            width:20%;
+        }
+
     </style>
 </head>
 <body>
@@ -98,8 +108,8 @@
         <label class="noir" >Couleur</label><input type="text" name="couleur"><br><br>
         <label  class="noir">Prix</label><input type="text" name="prix"><br><br>
         <label  class="noir">Quantité</label><input type="text" name="qq"><br><br>
-        <label  class="noir">image</label><input type="file" name="f1" /><br><br>
-        <label  class="noir">Categorie</label><input type="text" name="categorie"  value="3" /><br><br>
+        <label  class="noir">Image</label><input type="file" name="f1" /><br><br>
+        <label  class="noir">Numero de Categorie</label><input type="text" name="categorie[]"  value="3" /><br><br>
 
         <input type="submit" value="Submit" >
     </form>

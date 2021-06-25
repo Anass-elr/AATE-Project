@@ -65,6 +65,16 @@
             </div>
 
 
+            <div class="d1">
+              <a href="categorie.php" class="lien">
+              
+            <i class="fas fa-align-justify fa-4x"></i>
+             
+                <span>&nbsp Categories</a>
+            </div>
+
+
+
 
 
             

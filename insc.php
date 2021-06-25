@@ -65,13 +65,13 @@
   <div class="form">
       <h1>S'inscrire</h1>
         <form action="test-insc.php"  method="POST">
-           Username  &nbsp       <input type="text" name="username"><br>
-           Password &nbsp &nbsp    <input type="password" name="pass"><br>
+          Nom d'utilisateur        <input type="text" name="username"><br>
+           Mot de passe   <input type="password" name="pass"><br>
            Email  &nbsp&nbsp&nbsp&nbsp&nbsp&nbsp &nbsp&nbsp<input type="text" name="email"><br>
            Adresse &nbsp &nbsp    <input type="text" name="adresse"><br>
            Nom &nbsp &nbsp    <input type="text" name="nom"><br>
            Prenom &nbsp &nbsp    <input type="text" name="prenom"><br>
-           N'tele &nbsp &nbsp    <input type="text" name="tele"><br>
+           Numero de telephone     <input type="text" name="tele"><br>
 
            <?php
                 switch($message){

@@ -19,6 +19,11 @@
        
        .fdemande .demande table tr td{
             height:40px;
+            text-align:center;
+        }
+
+        .fdemande .demande table tr th{
+          text-align:center;
         }
 
         .fdemande .demande h1 {
@@ -57,7 +62,7 @@ input[type="button"]{
   <div class="demande">
       <h1>Liste De Clients</h1>
     <table >
-       <tr class="firstcolor"> <th>ID</th><th>username</th> <th>Password</th> <th>Email</th>
+       <tr class="firstcolor"> <th><i class='fas fa-user-circle fa-2x'></i> ID</th><th>username</th> <th>Password</th> <th>Email</th>
            <th>Accepter/refuser</th>
     
     </tr>
@@ -66,7 +71,7 @@ input[type="button"]{
 foreach($res as $tab){
     ?>
     <tr>
-        <td><?php echo $tab['id_client'];?></td> 
+        <td><i class='fas fa-user-circle fa-2x'></i> &nbsp;<?php echo $tab['id_client'];?></td> 
            <td>  <?php echo $tab['username']; ?> </td>
             <td>  <?php echo $tab['password'];?> </td>
             <td>  <?php echo $tab['email'];?> </td>

@@ -29,8 +29,8 @@
             <form action="session-login.php" method="post">
               
 
-                <label>Username </label><input type="text" name="login" > <br><br>
-               <label> Password </label> <input type="password"   name="pass">
+                <label>Nom d'utilisateur</label><input type="text" name="login" > <br><br>
+               <label> Mot de passe </label> <input type="password"   name="pass">
                 <br>
                 <?php
                     
@@ -50,7 +50,7 @@
 
                 ?>
                  <br>
-                <input type="submit" value="se conecter">
+                <input type="submit" value="Se Connecter">
                 <a href="insc.php"><input type="button" value="S'inscrire" ></a>
             </form>
 
